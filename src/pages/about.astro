@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const values = [
+  { name: 'Truth', text: 'We present and represent The Truth in all things.' },
+  { name: 'Respect', text: 'We respect each other; we respect you; we respect your life.' },
+  { name: 'Understanding', text: 'We seek to understand all settings, all people, all things.' },
+  { name: 'Service', text: 'We serve you; we serve humanity.' },
+  { name: 'Teamwork', text: 'We work together as a team; we are honored to be on your life team.' },
+];
+---
+
+<Base
+  title="About | Pluribus Inc"
+  description="Our mission, vision, technology and values — Pluribus Inc., a big data, geosocial & geospatial analytics company in McLean, Virginia."
+>
+  <section class="section section--black">
+    <div class="container">
+      <span class="eyebrow">About Pluribus</span>
+      <h1>Who we are</h1>
+      <p class="lead">
+        Founded in 2019 and headquartered in McLean, Virginia — a big data, geosocial &amp;
+        geospatial analytics company.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-grid">
+      <div class="card">
+        <span class="eyebrow">Our Mission</span>
+        <p>
+          We were created to tell every person in the world where they are, based on who they are;
+          to help every person in the world make smarter decisions about where they go and how they
+          get there, based on who they are; to make the world a safer and better place for each and
+          every person, based on who they are; and to lead the world in Identity-Based
+          Navigation®.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Our Vision</span>
+        <p class="about-grid__vision">
+          Intelligent, Identity-Based Navigation® for human- and machinekind.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <SectionHeading eyebrow="Our Technology" title="Pioneering a new epoch of connectivity" />
+      <p class="prose">
+        Through enabling technologies such as 5G, artificial intelligence, blockchain and the
+        internet of things (IoT), we believe a new epoch of human, machine and interrelated
+        connectivity is on the near horizon. Foreseeing this convergence and positioning ourselves
+        to be an industry leader in this new environment, we are pioneering new methodologies of
+        data science, data analytics, decision science, and geosocial &amp; geospatial awareness.
+        And because we believe there's no real design, only redesign, we're leveraging the history
+        of these elements to (re-)apply them with new technological augmentation.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Our Values / Our Ethos" title="What we stand for" />
+      <ul class="values">
+        {
+          values.map((value) => (
+            <li class="card">
+              <h3>{value.name}</h3>
+              <p>{value.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  @media (max-width: 820px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .about-grid .card p {
+    margin: 0;
+  }
+
+  .about-grid__vision {
+    font-size: var(--size-step-1);
+    font-weight: 600;
+  }
+
+  .values {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .values h3 {
+    font-size: var(--size-step-0);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+  }
+
+  .values p {
+    margin: 0;
+    color: var(--color-muted);
+  }
+</style>

@@ -1,0 +1,181 @@
+/* ------------------------------------------------------------------
+   Pluribus Inc. — design tokens & base styles
+   Brand: dark charcoal + lime accent (from pluribusdata.com),
+   ANJEL blues available as secondary accents.
+------------------------------------------------------------------- */
+
+:root {
+  --color-bg: #0e1013;
+  --color-bg-alt: #14171c;
+  --color-surface: #1b1f26;
+  --color-border: #2a2f38;
+  --color-text: #e8eaed;
+  --color-muted: #a2abb5;
+  --color-accent: #b8d332;
+  --color-accent-strong: #d3ee4b;
+  --color-blue: #05539c;
+  --color-blue-light: #9cd0f2;
+  --color-black: #000;
+
+  --font-sans: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --size-step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.94rem);
+  --size-step-0: clamp(1rem, 0.96rem + 0.22vw, 1.125rem);
+  --size-step-1: clamp(1.25rem, 1.16rem + 0.43vw, 1.5rem);
+  --size-step-2: clamp(1.56rem, 1.41rem + 0.76vw, 2rem);
+  --size-step-3: clamp(1.95rem, 1.7rem + 1.25vw, 2.66rem);
+  --size-step-4: clamp(2.44rem, 2.03rem + 2.05vw, 3.55rem);
+
+  --space-section: clamp(4rem, 8vw, 7rem);
+  --container: 72rem;
+  --radius: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--size-step-0);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+h1 { font-size: var(--size-step-4); }
+h2 { font-size: var(--size-step-3); }
+h3 { font-size: var(--size-step-2); }
+h4 { font-size: var(--size-step-1); }
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-accent-strong);
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Layout helpers ---------------------------------------------------- */
+
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.section--alt {
+  background: var(--color-bg-alt);
+}
+
+.section--black {
+  background: var(--color-black);
+}
+
+/* Eyebrow label above headings: "01 / BIG DATA" pattern ------------- */
+
+.eyebrow {
+  display: block;
+  font-size: var(--size-step--1);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.9rem;
+}
+
+.lead {
+  font-size: var(--size-step-1);
+  color: var(--color-muted);
+  max-width: 46ch;
+}
+
+/* Buttons ------------------------------------------------------------ */
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: var(--size-step-0);
+  border: 2px solid var(--color-accent);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn--solid {
+  background: var(--color-accent);
+  color: #10130a;
+}
+
+.btn--solid:hover {
+  background: var(--color-accent-strong);
+  color: #10130a;
+  text-decoration: none;
+}
+
+.btn--ghost {
+  color: var(--color-accent);
+}
+
+.btn--ghost:hover {
+  background: rgba(184, 211, 50, 0.12);
+  text-decoration: none;
+}
+
+/* Cards --------------------------------------------------------------- */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+/* Prose (bio pages, long-form copy) ----------------------------------- */
+
+.prose {
+  max-width: 68ch;
+}
+
+.prose p {
+  margin-bottom: 1.2em;
+}
+
+.prose ul {
+  padding-left: 1.2rem;
+}
+
+.prose li {
+  margin-bottom: 0.4em;
+}

@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  name: string;
+  title: string;
+  href: string;
+  headshot: ImageMetadata;
+}
+
+const { name, title, href, headshot } = Astro.props;
+---
+
+<a class="team-card card" href={href}>
+  <Image src={headshot} alt={`Portrait of ${name}`} width="480" height="480" class="team-card__photo" />
+  <h3>{name}</h3>
+  <p>{title}</p>
+</a>
+
+<style>
+  .team-card {
+    display: block;
+    color: var(--color-text);
+    text-align: center;
+    padding: 1.5rem;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .team-card:hover {
+    text-decoration: none;
+    color: var(--color-text);
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+  }
+
+  .team-card__photo {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: calc(var(--radius) - 4px);
+    margin-bottom: 1.25rem;
+  }
+
+  .team-card h3 {
+    font-size: var(--size-step-0);
+    margin-bottom: 0.25rem;
+  }
+
+  .team-card p {
+    color: var(--color-accent);
+    font-size: var(--size-step--1);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
+  }
+</style>

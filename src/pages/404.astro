@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page Not Found | Pluribus Inc">
+  <section class="section not-found">
+    <div class="container">
+      <span class="eyebrow">404</span>
+      <h1>Page not found</h1>
+      <p class="lead">The page you're looking for doesn't exist or has moved.</p>
+      <a class="btn btn--solid" href="/">Back to Home</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .not-found {
+    text-align: center;
+    padding-block: clamp(6rem, 15vw, 10rem);
+  }
+
+  .not-found .lead {
+    margin-inline: auto;
+    margin-bottom: 2rem;
+  }
+</style>

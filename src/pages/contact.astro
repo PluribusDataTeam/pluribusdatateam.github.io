@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Contact | Pluribus Inc"
+  description="Connect with Pluribus Inc. — info@pluribusdata.com, 571-380-4740, McLean, Virginia."
+>
+  <section class="section section--black">
+    <div class="container">
+      <span class="eyebrow">Contact</span>
+      <h1>Connect with us!</h1>
+      <p class="lead">Request more information about Pluribus, our technology, or partnerships.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="card">
+        <span class="eyebrow">Email</span>
+        <p class="contact-grid__big">
+          <a href="mailto:info@pluribusdata.com">info@pluribusdata.com</a>
+        </p>
+        <p class="contact-grid__note">The fastest way to reach the team.</p>
+        <a class="btn btn--solid" href="mailto:info@pluribusdata.com?subject=Request%20More%20Information">
+          Request More Information
+        </a>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Phone</span>
+        <p class="contact-grid__big"><a href="tel:+15713804740">571-380-4740</a></p>
+        <span class="eyebrow contact-grid__spaced">Office</span>
+        <p>
+          1640 Boro Place, 4th Floor<br />
+          McLean, VA 22102
+        </p>
+        <span class="eyebrow contact-grid__spaced">Follow Us</span>
+        <p class="contact-grid__social">
+          <a href="https://www.facebook.com/driveourways" rel="noopener">Facebook</a>
+          <a href="https://www.twitter.com/driveourways" rel="noopener">Twitter</a>
+          <a href="https://www.instagram.com/driveourways/" rel="noopener">Instagram</a>
+        </p>
+      </div>
+    </div>
+    <!--
+      No form backend yet (site is fully static). To add a hosted form later,
+      replace the mailto button above with a <form> posting to a form service
+      endpoint (e.g. Formspree/Basin): <form action="https://..." method="POST">.
+    -->
+  </section>
+</Base>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  @media (max-width: 720px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .contact-grid__big {
+    font-size: var(--size-step-1);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-grid__big a {
+    color: var(--color-text);
+  }
+
+  .contact-grid__big a:hover {
+    color: var(--color-accent);
+  }
+
+  .contact-grid__note {
+    color: var(--color-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-grid__spaced {
+    margin-top: 1.5rem;
+  }
+
+  .contact-grid__social {
+    display: flex;
+    gap: 1.25rem;
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import TeamCard from '../../components/TeamCard.astro';
+
+const members = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base
+  title="Team PLURIBUS | Pluribus Inc"
+  description="Meet the Pluribus Inc. leadership team, advisors and partners."
+>
+  <section class="section section--black">
+    <div class="container">
+      <span class="eyebrow">Team Pluribus</span>
+      <h1>Meet the Team!</h1>
+      <p class="lead">Select a team member for their detailed corporate biography.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="team-grid">
+        {
+          members.map((member) => (
+            <TeamCard
+              name={member.data.name}
+              title={member.data.title}
+              headshot={member.data.headshot}
+              href={`/team/${member.id}/`}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

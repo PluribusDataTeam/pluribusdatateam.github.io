@@ -1,0 +1,58 @@
+---
+interface Props {
+  number: string;
+  name: string;
+  href: string;
+  external?: boolean;
+}
+
+const { number, name, href, external = false } = Astro.props;
+---
+
+<a class="tech-card card" href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
+  <span class="tech-card__number">{number}</span>
+  <h3>{name}</h3>
+  <p class="tech-card__body"><slot /></p>
+  <span class="tech-card__cta">{external ? 'Visit site ↗' : 'Learn more →'}</span>
+</a>
+
+<style>
+  .tech-card {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .tech-card:hover {
+    text-decoration: none;
+    color: var(--color-text);
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+  }
+
+  .tech-card__number {
+    font-size: var(--size-step-3);
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .tech-card h3 {
+    font-size: var(--size-step-1);
+  }
+
+  .tech-card__body {
+    color: var(--color-muted);
+    flex-grow: 1;
+  }
+
+  .tech-card__cta {
+    font-weight: 700;
+    font-size: var(--size-step--1);
+    color: var(--color-accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+</style>
