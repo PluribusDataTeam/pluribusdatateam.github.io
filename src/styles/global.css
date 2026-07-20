@@ -1,34 +1,78 @@
 /* ------------------------------------------------------------------
-   Pluribus Inc. — design tokens & base styles
-   Brand: dark charcoal + lime accent (from pluribusdata.com),
-   ANJEL blues available as secondary accents.
+   Pluribus — design tokens & base styles
+   Source of truth: pluribusdata.fig → "Internal Only Canvas" variables
+   (Mockup/* color set, Sora + Manrope typescale) and "Mockup v2" frames.
 ------------------------------------------------------------------- */
 
 :root {
-  --color-bg: #0e1013;
-  --color-bg-alt: #14171c;
-  --color-surface: #1b1f26;
-  --color-border: #2a2f38;
-  --color-text: #e8eaed;
-  --color-muted: #a2abb5;
-  --color-accent: #b8d332;
-  --color-accent-strong: #d3ee4b;
-  --color-blue: #05539c;
-  --color-blue-light: #9cd0f2;
-  --color-black: #000;
+  /* Dark theme (default site background) */
+  --bg: #060b14;
+  --bg-variant: #0b1220;
+  --bg-deep: #02040c;
+  --surface: #111827;
+  --outline: #243244;
+  --outline-variant: #182433;
+  --heading: #ffffff;
+  --text: #d1d5db;
+  --muted: #94a3b8;
 
-  --font-sans: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Brand */
+  --brand: #1d4ed8;
+  --brand-hover: #2563eb;
+  --brand-light: #c1e5ff;
+  /* Accessible accent for small text on dark backgrounds (≥4.5:1 on --bg) */
+  --accent-readable: #7fb2f7;
+  --gold: #c9a227;
 
-  --size-step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.94rem);
-  --size-step-0: clamp(1rem, 0.96rem + 0.22vw, 1.125rem);
-  --size-step-1: clamp(1.25rem, 1.16rem + 0.43vw, 1.5rem);
-  --size-step-2: clamp(1.56rem, 1.41rem + 0.76vw, 2rem);
-  --size-step-3: clamp(1.95rem, 1.7rem + 1.25vw, 2.66rem);
-  --size-step-4: clamp(2.44rem, 2.03rem + 2.05vw, 3.55rem);
+  /* Inverted (light) sections */
+  --light-bg: #f8fafc;
+  --light-bg-variant: #f1f5f9;
+  --light-heading: #0f172a;
+  --light-text: #334155;
+  --light-muted: #64748b;
+  --light-outline: #e2e8f0;
 
-  --space-section: clamp(4rem, 8vw, 7rem);
-  --container: 72rem;
+  /* Buttons */
+  --btn-light-bg: #f8fafc;
+  --btn-light-text: #0f172a;
+
+  --font-display: 'Sora', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+
+  /* Typescale (fluid approximations of the Figma Desktop scale) */
+  --size-caption: clamp(0.8rem, 0.78rem + 0.1vw, 0.875rem);
+  --size-overline: 0.8125rem;
+  --size-body: clamp(0.97rem, 0.94rem + 0.15vw, 1rem);
+  --size-body-lg: clamp(1.05rem, 1rem + 0.25vw, 1.125rem);
+  --size-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --size-h2: clamp(1.55rem, 1.35rem + 0.9vw, 2rem);
+  --size-h1: clamp(1.9rem, 1.6rem + 1.5vw, 2.5rem);
+  --size-display: clamp(2.3rem, 1.9rem + 2.2vw, 3.4rem);
+  --size-display-xl: clamp(2.6rem, 2rem + 3vw, 4rem);
+
+  --space-section: clamp(4rem, 9vw, 7.5rem);
+  --container: 82.5rem; /* 1320px per design */
   --radius: 12px;
+  --radius-lg: 16px;
+
+  /* ---- Legacy aliases (pre-Figma pages still reference these) ---- */
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-variant);
+  --color-surface: var(--surface);
+  --color-border: var(--outline-variant);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent-readable);
+  --color-accent-strong: var(--brand-light);
+  --color-blue: var(--brand);
+  --color-blue-light: var(--brand-light);
+  --color-black: var(--bg-deep);
+  --size-step--1: var(--size-caption);
+  --size-step-0: var(--size-body);
+  --size-step-1: var(--size-body-lg);
+  --size-step-2: var(--size-h3);
+  --size-step-3: var(--size-h2);
+  --size-step-4: var(--size-display);
 }
 
 *,
@@ -43,37 +87,38 @@ html {
 
 body {
   margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-sans);
-  font-size: var(--size-step-0);
-  line-height: 1.65;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4 {
-  line-height: 1.15;
-  margin: 0 0 0.6em;
-  font-weight: 700;
-  letter-spacing: -0.015em;
+  font-family: var(--font-display);
+  color: var(--heading);
+  line-height: 1.18;
+  margin: 0 0 0.55em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
-h1 { font-size: var(--size-step-4); }
-h2 { font-size: var(--size-step-3); }
-h3 { font-size: var(--size-step-2); }
-h4 { font-size: var(--size-step-1); }
+h1 { font-size: var(--size-display); font-weight: 700; }
+h2 { font-size: var(--size-h2); }
+h3 { font-size: var(--size-h3); }
+h4 { font-size: var(--size-body-lg); }
 
 p {
   margin: 0 0 1em;
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--accent-readable);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--color-accent-strong);
   text-decoration: underline;
 }
 
@@ -83,7 +128,42 @@ img {
   display: block;
 }
 
-/* Layout helpers ---------------------------------------------------- */
+/* Focus visibility (WCAG 2.4.7) */
+:focus-visible {
+  outline: 2px solid var(--brand-light);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--brand);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Layout helpers ---- */
 
 .container {
   max-width: var(--container);
@@ -93,79 +173,65 @@ img {
 
 .section {
   padding-block: var(--space-section);
+  position: relative;
 }
 
+.section--variant,
 .section--alt {
-  background: var(--color-bg-alt);
+  background: var(--bg-variant);
 }
 
+.section--deep,
 .section--black {
-  background: var(--color-black);
+  background: var(--bg-deep);
 }
 
-/* Eyebrow label above headings: "01 / BIG DATA" pattern ------------- */
+/* Light ("inverted") sections */
+.section--light {
+  background: var(--light-bg);
+  color: var(--light-text);
+}
+
+.section--light h1,
+.section--light h2,
+.section--light h3,
+.section--light h4 {
+  color: var(--light-heading);
+}
+
+.section--light a {
+  color: var(--brand);
+}
+
+/* ---- Type helpers ---- */
 
 .eyebrow {
-  display: block;
-  font-size: var(--size-step--1);
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--size-overline);
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
+  color: var(--accent-readable);
+}
+
+.section--light .eyebrow {
+  color: var(--brand);
 }
 
 .lead {
-  font-size: var(--size-step-1);
-  color: var(--color-muted);
-  max-width: 46ch;
+  font-size: var(--size-body-lg);
+  color: var(--muted);
+  max-width: 62ch;
 }
 
-/* Buttons ------------------------------------------------------------ */
-
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.7rem;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: var(--size-step-0);
-  border: 2px solid var(--color-accent);
-  transition: background 0.15s ease, color 0.15s ease;
+.section--light .lead {
+  color: var(--light-muted);
 }
-
-.btn--solid {
-  background: var(--color-accent);
-  color: #10130a;
-}
-
-.btn--solid:hover {
-  background: var(--color-accent-strong);
-  color: #10130a;
-  text-decoration: none;
-}
-
-.btn--ghost {
-  color: var(--color-accent);
-}
-
-.btn--ghost:hover {
-  background: rgba(184, 211, 50, 0.12);
-  text-decoration: none;
-}
-
-/* Cards --------------------------------------------------------------- */
-
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 2rem;
-}
-
-/* Prose (bio pages, long-form copy) ----------------------------------- */
 
 .prose {
-  max-width: 68ch;
+  max-width: 70ch;
 }
 
 .prose p {
@@ -178,4 +244,112 @@ img {
 
 .prose li {
   margin-bottom: 0.4em;
+}
+
+/* ---- Buttons ---- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--size-body);
+  line-height: 1.2;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn--solid {
+  background: var(--btn-light-bg);
+  color: var(--btn-light-text);
+}
+
+.btn--solid:hover {
+  background: var(--brand-light);
+  color: var(--light-heading);
+}
+
+.btn--ghost {
+  border-color: var(--btn-light-bg);
+  color: var(--heading);
+}
+
+.btn--ghost:hover {
+  background: rgba(248, 250, 252, 0.12);
+}
+
+.section--light .btn--solid {
+  background: var(--light-heading);
+  color: #fff;
+}
+
+.section--light .btn--solid:hover {
+  background: var(--brand);
+  color: #fff;
+}
+
+.section--light .btn--ghost {
+  border-color: var(--light-heading);
+  color: var(--light-heading);
+}
+
+.section--light .btn--ghost:hover {
+  background: rgba(15, 23, 42, 0.08);
+}
+
+/* ---- Cards ---- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+
+/* Decorative gradient hairline (design: #c1e5ff fading at both ends) */
+.hairline {
+  height: 2px;
+  border: 0;
+  margin: 0;
+  background: linear-gradient(90deg, transparent, var(--brand-light), transparent);
+}
+
+/* Icon disc used across cards */
+.icon-disc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  flex: none;
+}
+
+.icon-disc svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Visually hidden (screen-reader-only text) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }

@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const capabilities = [
+  {
+    id: 'operational-awareness',
+    eyebrow: 'Operational Awareness',
+    title: 'See everything. As it happens.',
+    text: 'Real-time visibility and monitoring across environments — live geolocation of personnel and assets, incident detection, and complete situational awareness across incidents and teams.',
+  },
+  {
+    id: 'connected-infrastructure',
+    eyebrow: 'Connected Infrastructure',
+    title: 'One platform. One view. Complete clarity.',
+    text: 'Infrastructure integration and connected systems — unifying data, systems, and teams so information flows from the field to the command center without friction.',
+  },
+  {
+    id: 'real-time-coordination',
+    eyebrow: 'Real-Time Coordination',
+    title: 'Communication that keeps pace with events.',
+    text: 'Encrypted messaging, live video streaming, and team coordination that connect personnel, command centers, and first responders during critical events.',
+  },
+  {
+    id: 'ai-analytics',
+    eyebrow: 'AI & Analytics',
+    title: 'Actionable insights. When every second counts.',
+    text: 'AI-powered analytics that fuse and analyze operational data to reveal what matters most — predictive insights and decision support for faster, smarter action.',
+  },
+  {
+    id: 'scalable-systems',
+    eyebrow: 'Scalable Systems',
+    title: 'Flexible by design. Ready to grow.',
+    text: 'Technologies that integrate seamlessly with existing systems and adapt across organizations, missions, and environments as needs evolve.',
+  },
+];
+---
+
+<Base
+  title="Capabilities | Pluribus Inc"
+  description="Operational awareness, connected infrastructure, real-time coordination, AI & analytics, and scalable systems — the capabilities behind Pluribus technologies."
+>
+  <section class="section section--deep">
+    <div class="container">
+      <span class="eyebrow">Capabilities</span>
+      <h1>Operational &amp; Intelligence Capabilities.</h1>
+      <p class="lead">
+        The operational advantages Pluribus technologies deliver — from first detection to
+        coordinated resolution.
+      </p>
+    </div>
+  </section>
+
+  {
+    capabilities.map((cap, i) => (
+      <section class:list={['section', { 'section--variant': i % 2 === 1 }]} id={cap.id}>
+        <div class="container">
+          <span class="eyebrow">{cap.eyebrow}</span>
+          <h2>{cap.title}</h2>
+          <p class="prose">{cap.text}</p>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="section section--light" id="highlights">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Capability Highlights"
+        title="Continuous Intelligence. Mission Impact."
+      />
+      <ul class="highlights">
+        <li><strong>Real-Time Data</strong> — ingest from any source, anytime, anywhere.</li>
+        <li><strong>Connected Intelligence</strong> — unify data, systems, and teams for complete clarity.</li>
+        <li><strong>Actionable Insights</strong> — AI-powered analytics reveal what matters most.</li>
+        <li><strong>Faster Response</strong> — empower teams to act with speed and confidence.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container">
+      <hr class="hairline" />
+      <div class="cta-band__body">
+        <h2>See how these capabilities come together.</h2>
+        <div class="cta-band__actions">
+          <a class="btn btn--solid" href="/technologies/">Explore Technologies</a>
+          <a class="btn btn--ghost" href="/contact/">Request a Demo</a>
+        </div>
+      </div>
+      <hr class="hairline" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .highlights {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1.25rem;
+  }
+
+  .highlights li {
+    background: #fff;
+    border: 1px solid var(--light-outline);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+
+  .cta-band__body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: clamp(2rem, 4vw, 3rem);
+  }
+
+  .cta-band__body h2 {
+    margin: 0;
+  }
+
+  .cta-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>

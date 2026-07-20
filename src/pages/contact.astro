@@ -3,14 +3,17 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base
-  title="Contact | Pluribus Inc"
+  title="Contact Us | Pluribus Inc"
   description="Connect with Pluribus Inc. — info@pluribusdata.com, 571-380-4740, McLean, Virginia."
 >
-  <section class="section section--black">
+  <section class="section section--deep">
     <div class="container">
-      <span class="eyebrow">Contact</span>
-      <h1>Connect with us!</h1>
-      <p class="lead">Request more information about Pluribus, our technology, or partnerships.</p>
+      <span class="eyebrow">Contact Us</span>
+      <h1>Let's Build the Future Together.</h1>
+      <p class="lead">
+        Request a demo, ask about our technologies, or explore a partnership — the team reads
+        every message.
+      </p>
     </div>
   </section>
 
@@ -22,8 +25,8 @@ import Base from '../layouts/Base.astro';
           <a href="mailto:info@pluribusdata.com">info@pluribusdata.com</a>
         </p>
         <p class="contact-grid__note">The fastest way to reach the team.</p>
-        <a class="btn btn--solid" href="mailto:info@pluribusdata.com?subject=Request%20More%20Information">
-          Request More Information
+        <a class="btn btn--solid" href="mailto:info@pluribusdata.com?subject=Request%20a%20Demo">
+          Request a Demo
         </a>
       </div>
       <div class="card">
@@ -31,21 +34,19 @@ import Base from '../layouts/Base.astro';
         <p class="contact-grid__big"><a href="tel:+15713804740">571-380-4740</a></p>
         <span class="eyebrow contact-grid__spaced">Office</span>
         <p>
-          1640 Boro Place, 4th Floor<br />
+          640 Boro Place, 4th Floor<br />
           McLean, VA 22102
         </p>
-        <span class="eyebrow contact-grid__spaced">Follow Us</span>
-        <p class="contact-grid__social">
-          <a href="https://www.facebook.com/driveourways" rel="noopener">Facebook</a>
-          <a href="https://www.twitter.com/driveourways" rel="noopener">Twitter</a>
-          <a href="https://www.instagram.com/driveourways/" rel="noopener">Instagram</a>
+        <span class="eyebrow contact-grid__spaced">Connect</span>
+        <p>
+          <a href="https://www.linkedin.com/company/pluribus-inc" rel="noopener">LinkedIn</a>
         </p>
       </div>
     </div>
     <!--
-      No form backend yet (site is fully static). To add a hosted form later,
-      replace the mailto button above with a <form> posting to a form service
-      endpoint (e.g. Formspree/Basin): <form action="https://..." method="POST">.
+      Inquiry form (per the Figma outline) intentionally deferred: the site is fully
+      static with no form backend yet. When an endpoint exists, add a <form> here
+      posting to it (e.g. Formspree/Basin or a company API Gateway endpoint).
     -->
   </section>
 </Base>
@@ -65,31 +66,25 @@ import Base from '../layouts/Base.astro';
   }
 
   .contact-grid__big {
-    font-size: var(--size-step-1);
+    font-size: var(--size-h3);
     font-weight: 600;
     margin-bottom: 0.5rem;
   }
 
   .contact-grid__big a {
-    color: var(--color-text);
+    color: var(--heading);
   }
 
   .contact-grid__big a:hover {
-    color: var(--color-accent);
+    color: var(--brand-light);
   }
 
   .contact-grid__note {
-    color: var(--color-muted);
+    color: var(--muted);
     margin-bottom: 1.5rem;
   }
 
   .contact-grid__spaced {
     margin-top: 1.5rem;
-  }
-
-  .contact-grid__social {
-    display: flex;
-    gap: 1.25rem;
-    margin: 0;
   }
 </style>

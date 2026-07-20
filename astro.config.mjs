@@ -6,4 +6,9 @@ export default defineConfig({
   // Update to https://pluribusdata.com when the custom domain moves over
   site: 'https://pluribusdatateam.github.io',
   trailingSlash: 'ignore',
+  // Old URLs from the pre-Figma site structure
+  redirects: {
+    '/technology/': '/technologies/',
+    '/about/': '/company/',
+  },
 });

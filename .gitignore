@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# design sources (large, not for the public repo)
+pluribusdata.fig
+new_changes_july20th2026.zip

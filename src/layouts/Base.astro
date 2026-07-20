@@ -1,4 +1,8 @@
 ---
+import '@fontsource/sora/600.css';
+import '@fontsource/sora/700.css';
+import '@fontsource/manrope/400.css';
+import '@fontsource/manrope/700.css';
 import '../styles/global.css';
 
 interface Props {
@@ -8,16 +12,18 @@ interface Props {
 
 const {
   title,
-  description = 'Pluribus Inc. is a big data, geosocial & geospatial analytics company pioneering Identity-Based Navigation®.',
+  description = 'Pluribus builds secure, AI-powered technologies for government, public safety, and critical infrastructure — mission-ready situational awareness and connected operations.',
 } = Astro.props;
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/technology/', label: 'Our Technology' },
-  { href: '/about/', label: 'About' },
-  { href: '/team/', label: 'Team' },
-  { href: '/contact/', label: 'Contact' },
+  { href: '/technologies/', label: 'Technologies' },
+  { href: '/capabilities/', label: 'Capabilities' },
+  { href: '/environments/', label: 'Environments' },
+  { href: '/insights/', label: 'Insights' },
+  { href: '/company/', label: 'Company' },
 ];
+
+const footerNav = [...navLinks, { href: '/contact/', label: 'Contact Us' }];
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
@@ -31,21 +37,31 @@ const isActive = (href: string) =>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#060b14" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/images/logo-pluribus.png" />
+    <meta property="og:image" content="/images/pluribus-wordmark.png" />
     <title>{title}</title>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
     <header class="site-header">
       <div class="container site-header__inner">
         <a class="site-header__brand" href="/">
-          <img src="/images/logo-pluribus.png" alt="Pluribus Inc." width="160" height="41" />
+          <img src="/images/pluribus-wordmark.png" alt="Pluribus — home" width="151" height="38" />
         </a>
-        <button class="site-header__toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
+        <button
+          class="site-header__toggle"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <span class="visually-hidden">Menu</span>
+          <span class="site-header__bar" aria-hidden="true"></span>
+          <span class="site-header__bar" aria-hidden="true"></span>
+          <span class="site-header__bar" aria-hidden="true"></span>
         </button>
-        <nav id="site-nav" class="site-nav">
+        <nav id="site-nav" class="site-nav" aria-label="Main">
           <ul>
             {
               navLinks.map((link) => (
@@ -56,44 +72,69 @@ const isActive = (href: string) =>
                 </li>
               ))
             }
+            <li class="site-nav__cta">
+              <a class="btn btn--solid" href="/contact/">Contact Us</a>
+            </li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <main>
+    <main id="main">
       <slot />
     </main>
 
     <footer class="site-footer">
+      <hr class="hairline" />
       <div class="container site-footer__grid">
-        <div>
-          <img src="/images/logo-pluribus.png" alt="Pluribus Inc." width="180" height="46" />
-          <p class="site-footer__tagline">Providing a personalized, safer world for each person!</p>
-        </div>
-        <div>
-          <h4>Connect With Us</h4>
+        <div class="site-footer__brand">
+          <img src="/images/pluribus-wordmark.png" alt="" width="151" height="38" />
           <p>
-            <a href="mailto:info@pluribusdata.com">info@pluribusdata.com</a><br />
-            <a href="tel:+15713804740">Tel: 571-380-4740</a>
+            Mission-driven technologies for government, public safety, and critical
+            infrastructure.
           </p>
-          <p>
-            1640 Boro Place, 4th Floor<br />
-            McLean, VA 22102
+          <p class="site-footer__motto" aria-label="Mission ready. AI powered. Connected intelligence.">
+            Mission Ready.<br />AI Powered.<br />Connected Intelligence.
           </p>
         </div>
-        <div>
-          <h4>Follow Us</h4>
-          <ul class="site-footer__social">
-            <li><a href="https://www.facebook.com/driveourways" rel="noopener">Facebook</a></li>
-            <li><a href="https://www.twitter.com/driveourways" rel="noopener">Twitter</a></li>
-            <li><a href="https://www.instagram.com/driveourways/" rel="noopener">Instagram</a></li>
+        <nav aria-label="Footer">
+          <h2 class="site-footer__head">Navigation</h2>
+          <ul class="site-footer__links">
+            {
+              footerNav.map((link) => (
+                <li>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))
+            }
           </ul>
+        </nav>
+        <div>
+          <h2 class="site-footer__head">Contact</h2>
+          <address class="site-footer__contact">
+            <p><a href="mailto:info@pluribusdata.com">info@pluribusdata.com</a></p>
+            <p><a href="tel:+15713804740">571-380-4740</a></p>
+            <p>640 Boro Place, 4th Floor<br />McLean, VA 22102</p>
+            <p>
+              <a href="https://www.linkedin.com/company/pluribus-inc" rel="noopener">LinkedIn</a>
+            </p>
+          </address>
+        </div>
+        <div>
+          <h2 class="site-footer__head">Ready to see Pluribus in action?</h2>
+          <a class="btn btn--ghost" href="/contact/">Request a Demo</a>
         </div>
       </div>
+      <div class="container">
+        <hr class="hairline" />
+      </div>
       <div class="container site-footer__legal">
-        <p>© {new Date().getFullYear()} Pluribus Inc. All rights reserved.</p>
-        <p>Identity-Based Navigation®, IBN®, OurWays™, ANJEL® and Guardian ANJEL® are marks of Pluribus Inc.</p>
+        <p>© {new Date().getFullYear()} Pluribus Inc. All Rights Reserved.</p>
+        <ul class="site-footer__legal-links">
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms</a></li>
+          <li><a href="/accessibility/">Accessibility</a></li>
+        </ul>
       </div>
     </footer>
 
@@ -104,6 +145,14 @@ const isActive = (href: string) =>
         const open = nav?.classList.toggle('is-open');
         toggle.setAttribute('aria-expanded', String(Boolean(open)));
       });
+      // Close the menu with Escape (focus returns to the toggle)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav?.classList.contains('is-open')) {
+          nav.classList.remove('is-open');
+          toggle?.setAttribute('aria-expanded', 'false');
+          (toggle as HTMLElement | null)?.focus();
+        }
+      });
     </script>
 
     <style>
@@ -111,47 +160,51 @@ const isActive = (href: string) =>
         position: sticky;
         top: 0;
         z-index: 10;
-        background: rgba(0, 0, 0, 0.92);
+        background: rgba(6, 11, 20, 0.94);
         backdrop-filter: blur(8px);
-        border-bottom: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--outline-variant);
       }
 
       .site-header__inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 1rem;
-        padding-block: 0.9rem;
+        gap: 1.5rem;
+        padding-block: 1rem;
       }
 
       .site-header__brand img {
-        width: 160px;
+        width: 151px;
         height: auto;
       }
 
       .site-nav ul {
         display: flex;
-        gap: 1.75rem;
+        align-items: center;
+        gap: 2.25rem;
         list-style: none;
         margin: 0;
         padding: 0;
       }
 
-      .site-nav a {
-        color: var(--color-text);
-        font-weight: 600;
-        font-size: var(--size-step--1);
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
+      .site-nav a:not(.btn) {
+        color: var(--heading);
+        font-weight: 400;
+        font-size: var(--size-body);
       }
 
-      .site-nav a:hover {
-        color: var(--color-accent);
+      .site-nav a:not(.btn):hover {
+        color: var(--brand-light);
         text-decoration: none;
       }
 
-      .site-nav a[aria-current='page'] {
-        color: var(--color-accent);
+      .site-nav a:not(.btn)[aria-current='page'] {
+        color: var(--accent-readable);
+        font-weight: 700;
+      }
+
+      .site-nav__cta .btn {
+        padding: 0.7rem 1.4rem;
       }
 
       .site-header__toggle {
@@ -160,17 +213,17 @@ const isActive = (href: string) =>
         gap: 5px;
         background: none;
         border: 0;
-        padding: 0.5rem;
+        padding: 0.6rem;
         cursor: pointer;
       }
 
-      .site-header__toggle span {
+      .site-header__bar {
         width: 24px;
         height: 2px;
-        background: var(--color-text);
+        background: var(--heading);
       }
 
-      @media (max-width: 760px) {
+      @media (max-width: 900px) {
         .site-header__toggle {
           display: flex;
         }
@@ -181,8 +234,8 @@ const isActive = (href: string) =>
           top: 100%;
           left: 0;
           right: 0;
-          background: rgba(0, 0, 0, 0.97);
-          border-bottom: 1px solid var(--color-border);
+          background: rgba(6, 11, 20, 0.98);
+          border-bottom: 1px solid var(--outline-variant);
         }
 
         .site-nav.is-open {
@@ -191,76 +244,127 @@ const isActive = (href: string) =>
 
         .site-nav ul {
           flex-direction: column;
+          align-items: stretch;
           gap: 0;
-          padding: 0.5rem 0 1rem;
+          padding: 0.5rem 0 1.25rem;
         }
 
-        .site-nav a {
+        .site-nav a:not(.btn) {
           display: block;
-          padding: 0.8rem clamp(1.25rem, 4vw, 2.5rem);
+          padding: 0.85rem clamp(1.25rem, 4vw, 2.5rem);
+        }
+
+        .site-nav__cta {
+          padding: 0.85rem clamp(1.25rem, 4vw, 2.5rem);
         }
       }
 
       .site-footer {
-        background: var(--color-black);
-        border-top: 1px solid var(--color-border);
-        padding-block: 3.5rem 2rem;
+        background: var(--bg);
         margin-top: var(--space-section);
       }
 
       .site-footer__grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
         gap: 2.5rem;
+        padding-block: 3.5rem;
       }
 
-      .site-footer__grid h4 {
-        font-size: var(--size-step--1);
+      @media (max-width: 980px) {
+        .site-footer__grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .site-footer__grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .site-footer__brand img {
+        margin-bottom: 1.25rem;
+      }
+
+      .site-footer__brand p {
+        color: var(--text);
+        max-width: 38ch;
+      }
+
+      .site-footer__motto {
+        font-weight: 700;
+        font-size: var(--size-overline);
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        letter-spacing: 0.18em;
-        color: var(--color-accent);
+        color: var(--accent-readable);
       }
 
-      .site-footer__tagline {
-        color: var(--color-muted);
-        margin-top: 1rem;
-        max-width: 30ch;
+      .site-footer__head {
+        font-family: var(--font-body);
+        font-size: var(--size-body-lg);
+        font-weight: 400;
+        color: var(--heading);
+        margin-bottom: 1rem;
       }
 
-      .site-footer__social {
+      .site-footer__links {
         list-style: none;
         margin: 0;
         padding: 0;
       }
 
-      .site-footer__social li {
-        margin-bottom: 0.4rem;
+      .site-footer__links li {
+        margin-bottom: 0.55rem;
       }
 
-      .site-footer__social a,
-      .site-footer__grid a {
-        color: var(--color-text);
+      .site-footer__links a,
+      .site-footer__contact a {
+        color: var(--text);
       }
 
-      .site-footer__social a:hover,
-      .site-footer__grid a:hover {
-        color: var(--color-accent);
+      .site-footer__links a:hover,
+      .site-footer__contact a:hover {
+        color: var(--brand-light);
+      }
+
+      .site-footer__contact {
+        font-style: normal;
+      }
+
+      .site-footer__contact p {
+        margin-bottom: 0.7rem;
       }
 
       .site-footer__legal {
-        margin-top: 3rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--color-border);
-        color: var(--color-muted);
-        font-size: var(--size-step--1);
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        gap: 0.5rem;
+        align-items: center;
+        gap: 0.75rem;
+        padding-block: 1.5rem;
+        color: var(--text);
+        font-size: var(--size-caption);
       }
 
       .site-footer__legal p {
         margin: 0;
+      }
+
+      .site-footer__legal-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .site-footer__legal-links a {
+        color: var(--text);
+      }
+
+      .site-footer__legal-links a:hover {
+        color: var(--brand-light);
       }
     </style>
   </body>

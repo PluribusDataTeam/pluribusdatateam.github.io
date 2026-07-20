@@ -1,0 +1,225 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import TeamCard from '../components/TeamCard.astro';
+
+const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+
+const values = [
+  { name: 'Truth', text: 'We present and represent The Truth in all things.' },
+  { name: 'Respect', text: 'We respect each other; we respect you; we respect your life.' },
+  { name: 'Understanding', text: 'We seek to understand all settings, all people, all things.' },
+  { name: 'Service', text: 'We serve you; we serve humanity.' },
+  { name: 'Teamwork', text: 'We work together as a team; we are honored to be on your life team.' },
+];
+---
+
+<Base
+  title="Company | Pluribus Inc"
+  description="Pluribus Inc. — mission, vision, values, founder story, and the team. A technology company in McLean, Virginia building intelligence that protects people."
+>
+  <section class="section section--deep">
+    <div class="container">
+      <span class="eyebrow">Company</span>
+      <h1>Protecting People Through Intelligent Technology.</h1>
+      <p class="lead">
+        Founded in 2019 and headquartered in McLean, Virginia — Pluribus builds secure, AI-powered
+        technologies for the people the world depends on.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div class="card">
+        <span class="eyebrow">Our Mission</span>
+        <p>
+          We were created to tell every person in the world where they are, based on who they are;
+          to help every person in the world make smarter decisions about where they go and how they
+          get there, based on who they are; to make the world a safer and better place for each and
+          every person, based on who they are; and to lead the world in Identity-Based
+          Navigation®.
+        </p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Our Vision</span>
+        <p class="about-grid__vision">
+          Intelligent, Identity-Based Navigation® for human- and machinekind.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--variant" id="approach">
+    <div class="container">
+      <SectionHeading eyebrow="Our Approach" title="Pioneering a new epoch of connectivity" />
+      <p class="prose">
+        Through enabling technologies such as 5G, artificial intelligence, blockchain and the
+        internet of things (IoT), we believe a new epoch of human, machine and interrelated
+        connectivity is on the near horizon. Foreseeing this convergence and positioning ourselves
+        to be an industry leader in this new environment, we are pioneering new methodologies of
+        data science, data analytics, decision science, and geosocial &amp; geospatial awareness.
+        And because we believe there's no real design, only redesign, we're leveraging the history
+        of these elements to (re-)apply them with new technological augmentation.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="founder">
+    <div class="container founder-band">
+      <img
+        src="/images/founder-james-samuel.png"
+        alt="James A. Samuel, Jr., Founder and CEO of Pluribus"
+        loading="lazy"
+      />
+      <div>
+        <span class="eyebrow">Founder Story</span>
+        <h2>Mission Inspired. Built Through Experience.</h2>
+        <p class="prose">
+          After decades in military operations — from the Air Force Academy and the cockpit of an
+          F-15C to national-level intelligence leadership — founder James A. Samuel, Jr. kept
+          returning to one question: <em>“Why aren't we better prepared?”</em> Pluribus is his
+          answer: smarter, mission-ready technologies that protect people when it matters most.
+        </p>
+        <a class="btn btn--ghost" href="/team/james-samuel/">Read the full bio</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--variant" id="values">
+    <div class="container">
+      <SectionHeading eyebrow="Our Values / Our Ethos" title="What we stand for" />
+      <ul class="values">
+        {
+          values.map((value) => (
+            <li class="card">
+              <h3>{value.name}</h3>
+              <p>{value.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="team">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Leadership"
+        title="Team Pluribus"
+        lede="Select a team member for their detailed corporate biography."
+      />
+      <div class="team-grid">
+        {
+          team.map((member) => (
+            <TeamCard
+              name={member.data.name}
+              title={member.data.title}
+              headshot={member.data.headshot}
+              href={`/team/${member.id}/`}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="csr-teaser">
+    <div class="container">
+      <hr class="hairline" />
+      <div class="csr-teaser__body">
+        <div>
+          <span class="eyebrow">Corporate Social Responsibility</span>
+          <h2>Investing in the next generation.</h2>
+        </div>
+        <a class="btn btn--ghost" href="/csr/">See our CSR program</a>
+      </div>
+      <hr class="hairline" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  @media (max-width: 820px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .about-grid .card p {
+    margin: 0;
+  }
+
+  .about-grid__vision {
+    font-size: var(--size-h3);
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .founder-band {
+    display: grid;
+    grid-template-columns: minmax(14rem, 1fr) 2fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: center;
+  }
+
+  @media (max-width: 820px) {
+    .founder-band {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .founder-band img {
+    border-radius: var(--radius-lg);
+    width: 100%;
+  }
+
+  .values {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .values h3 {
+    font-size: var(--size-body);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-readable);
+  }
+
+  .values p {
+    margin: 0;
+    color: var(--text);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: 1.5rem;
+  }
+
+  .csr-teaser__body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: clamp(2rem, 4vw, 3rem);
+  }
+
+  .csr-teaser__body h2 {
+    margin: 0;
+  }
+</style>

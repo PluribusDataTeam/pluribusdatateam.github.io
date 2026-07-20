@@ -1,0 +1,222 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<Base
+  title="Technologies | Pluribus Inc"
+  description="Guardian ANJEL™, ANJEL KLAXON™, and the Pluribus AI Intelligence Platform — AI-powered monitoring, communication, and operational intelligence technologies."
+>
+  <section class="section section--deep">
+    <div class="container">
+      <span class="eyebrow">Technologies</span>
+      <h1>One Connected Ecosystem of Mission-Ready Technology.</h1>
+      <p class="lead">
+        Pluribus technologies connect data, people, and operations — empowering organizations to
+        detect, communicate, and respond with confidence.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="guardian-anjel">
+    <div class="container tech-split">
+      <div>
+        <span class="eyebrow">Flagship • Situational Awareness</span>
+        <h2>Guardian ANJEL™</h2>
+        <p class="prose">
+          A real-time situational awareness platform that helps improve safety, communication, and
+          coordinated response during critical events. Guardian ANJEL connects personnel, command
+          centers, and responders through real-time communication, location awareness, and
+          coordinated incident management — turning every smartphone into a GPS-enabled,
+          live-streaming, incident-reporting tool.
+        </p>
+        <ul class="feature-list">
+          <li>Real-Time Awareness</li>
+          <li>Secure Communication</li>
+          <li>Live Location Sharing</li>
+          <li>Live Geolocation &amp; drone alerts</li>
+          <li>Encrypted messaging and group coordination</li>
+        </ul>
+        <a class="btn btn--ghost" href="https://www.guardiananjel.com" rel="noopener" target="_blank">
+          Visit guardiananjel.com ↗
+        </a>
+      </div>
+      <img
+        src="/images/guardian-anjel-emblem.png"
+        alt="Guardian ANJEL emblem — a winged A with a halo inside a camera lens"
+        width="420"
+        loading="lazy"
+        class="tech-split__emblem"
+      />
+    </div>
+  </section>
+
+  <section class="section section--variant" id="anjel-klaxon">
+    <div class="container tech-split">
+      <div>
+        <span class="eyebrow">Emergency Notification</span>
+        <h2>ANJEL KLAXON™</h2>
+        <p class="prose">
+          A multi-channel emergency notification system designed to rapidly deliver alerts and keep
+          teams informed when every second matters — delivering critical alerts across any channel,
+          anywhere.
+        </p>
+        <ul class="feature-list">
+          <li>Mass Notifications</li>
+          <li>Multi-Channel Alerts</li>
+          <li>Geo-Targeted Messaging</li>
+        </ul>
+        <a class="btn btn--ghost" href="/contact/">Request a Demo</a>
+      </div>
+      <img
+        src="/images/step-3-notify-command.png"
+        alt="Command center receiving mass notification alerts"
+        width="560"
+        loading="lazy"
+        class="tech-split__photo"
+      />
+    </div>
+  </section>
+
+  <section class="section" id="ai-platform">
+    <div class="container tech-split">
+      <div>
+        <span class="eyebrow">AI &amp; Analytics</span>
+        <h2>AI Intelligence Platform</h2>
+        <p class="prose">
+          An intelligent analytics platform that transforms operational data into actionable
+          insights for faster, more informed decision-making. Advanced AI and analytics turn
+          real-time data into predictions, insights, and decision support for the operators who
+          need them most.
+        </p>
+        <ul class="feature-list">
+          <li>AI Analytics</li>
+          <li>Predictive Insights</li>
+          <li>Decision Support</li>
+        </ul>
+        <a class="btn btn--ghost" href="/contact/">Connect With Our Team</a>
+      </div>
+      <img
+        src="/images/step-4-coordinate-response.png"
+        alt="AI analytics console with live incident data"
+        width="560"
+        loading="lazy"
+        class="tech-split__photo"
+      />
+    </div>
+  </section>
+
+  <section class="section section--variant" id="heritage">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Technology Heritage"
+        title="Built on a decade of data science."
+        lede="The research and platforms behind today's product family."
+      />
+      <div class="heritage-grid">
+        <div class="card">
+          <h3>Big Data &amp; Geospatial Analytics</h3>
+          <p>
+            Founded in 2019, Pluribus specializes in making the complex simple, the obscure plain
+            and the unknown known — big data, geosocial &amp; geospatial analytics that derive keen
+            insights.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Identity-Based Navigation®</h3>
+          <p>
+            Our specialty: insights about where you are (or plan to go), based on who YOU are — a
+            personalized and optimized world.
+            <a href="/identity-based-navigation/">Deep dive: IBN® &amp; OurWays™</a>
+          </p>
+        </div>
+        <div class="card">
+          <h3>ANJEL® Tech</h3>
+          <p>
+            The cloud-based, GPS-enabled, live-streaming Personal Security Service for individuals
+            and families that Guardian ANJEL grew from.
+            <a href="https://www.anjel.tech" rel="noopener" target="_blank">anjel.tech ↗</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container">
+      <hr class="hairline" />
+      <div class="cta-band__body">
+        <h2>Ready to see the ecosystem in action?</h2>
+        <div class="cta-band__actions">
+          <a class="btn btn--solid" href="/contact/">Request a Demo</a>
+          <a class="btn btn--ghost" href="/capabilities/">Explore Capabilities</a>
+        </div>
+      </div>
+      <hr class="hairline" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .tech-split {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  @media (max-width: 860px) {
+    .tech-split {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .tech-split__emblem {
+    max-width: 340px;
+    justify-self: center;
+  }
+
+  .tech-split__photo {
+    border-radius: var(--radius-lg);
+    justify-self: center;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 1.75rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .feature-list li::before {
+    content: '—';
+    color: var(--accent-readable);
+    margin-right: 0.6rem;
+  }
+
+  .heritage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1.5rem;
+  }
+
+  .cta-band__body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: clamp(2rem, 4vw, 3rem);
+  }
+
+  .cta-band__body h2 {
+    margin: 0;
+  }
+
+  .cta-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>

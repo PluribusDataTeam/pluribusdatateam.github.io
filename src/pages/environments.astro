@@ -1,0 +1,127 @@
+---
+import Base from '../layouts/Base.astro';
+
+const environments = [
+  {
+    id: 'government',
+    name: 'Government',
+    sub: 'Mission Operations',
+    text: 'Supporting government and defense organizations with secure, mission-ready situational awareness — from installation security to coordinated mission operations.',
+    image: '/images/env-government.png',
+    alt: 'United States Capitol dome behind an American flag',
+  },
+  {
+    id: 'public-safety',
+    name: 'Public Safety',
+    sub: 'Emergency Response',
+    text: 'Technologies for emergency response and public operations — connecting personnel, command centers, and first responders when seconds matter.',
+    image: '/images/step-5-respond-resolve.png',
+    alt: 'Police, fire, and EMS units at an active incident',
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise Operations',
+    sub: 'Connected Operations',
+    text: 'Operational coordination and workforce safety for enterprises — one platform for visibility, communication, and faster operational decisions.',
+    image: '/images/hero-night-ops.png',
+    alt: 'Operations leader reviewing a live dashboard over a city at night',
+  },
+  {
+    id: 'smart-communities',
+    name: 'Smart Communities',
+    sub: 'Connected Infrastructure',
+    text: 'Connected infrastructure and community-focused environments — safer, smarter public spaces powered by real-time awareness.',
+    image: '/images/step-2-share-location.png',
+    alt: 'Connected community map with live location pins',
+  },
+  {
+    id: 'healthcare',
+    name: 'Healthcare & Senior Care',
+    sub: 'Care Environments',
+    text: 'Monitoring and communication technologies for care environments — protecting patients, residents, and the teams who serve them.',
+    image: '/images/step-1-detect-report.png',
+    alt: 'Caregiver using a mobile alert application',
+  },
+  {
+    id: 'education',
+    name: 'Education & Campus Safety',
+    sub: 'Connected Campuses',
+    text: 'Connected safety and communication for educational environments — from K-12 to university campuses.',
+    image: '/images/product-guardian-anjel.png',
+    alt: 'Student walking on a city street with a safety app active',
+  },
+  {
+    id: 'critical-infrastructure',
+    name: 'Critical & Industrial Infrastructure',
+    sub: 'Essential Services',
+    text: 'Operational intelligence technologies for industrial and critical infrastructure — resilience for the services communities depend on.',
+    image: '/images/step-3-notify-command.png',
+    alt: 'Infrastructure command center with monitoring dashboards',
+  },
+];
+---
+
+<Base
+  title="Environments | Pluribus Inc"
+  description="Government, public safety, enterprise, smart communities, healthcare, education, and critical infrastructure — the environments Pluribus technologies support."
+>
+  <section class="section section--deep">
+    <div class="container">
+      <span class="eyebrow">Environments</span>
+      <h1>Built for the World's Most Critical Operations.</h1>
+      <p class="lead">
+        The industries and operational environments supported by Pluribus technologies.
+      </p>
+    </div>
+  </section>
+
+  {
+    environments.map((env, i) => (
+      <section class:list={['section', { 'section--variant': i % 2 === 1 }]} id={env.id}>
+        <div class:list={['container', 'env-row', { 'env-row--flip': i % 2 === 1 }]}>
+          <div>
+            <span class="eyebrow">{env.sub}</span>
+            <h2>{env.name}</h2>
+            <p class="prose">{env.text}</p>
+            <a class="btn btn--ghost" href="/contact/">Discuss your environment</a>
+          </div>
+          <img src={env.image} alt={env.alt} loading="lazy" class="env-row__image" />
+        </div>
+      </section>
+    ))
+  }
+</Base>
+
+<style>
+  .env-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .env-row--flip {
+    grid-template-columns: 1fr 1.2fr;
+  }
+
+  .env-row--flip > div {
+    order: 2;
+  }
+
+  @media (max-width: 860px) {
+    .env-row,
+    .env-row--flip {
+      grid-template-columns: 1fr;
+    }
+    .env-row--flip > div {
+      order: 0;
+    }
+  }
+
+  .env-row__image {
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-height: 22rem;
+    object-fit: cover;
+  }
+</style>

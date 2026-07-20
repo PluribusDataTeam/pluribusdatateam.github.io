@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Placeholder posts from the Figma mockup — replace with real articles
+// (or a content collection) when the team has publishable material.
+const posts = [
+  {
+    title: 'Advancing AI for Mission-Critical Decision Support',
+    blurb:
+      'How AI-assisted analysis is changing the speed and quality of operational decisions.',
+    image: '/images/step-4-coordinate-response.png',
+  },
+  {
+    title: 'Connected Intelligence for Modern Security Operations',
+    blurb:
+      'Why unified data, communication, and location awareness outperform siloed tools.',
+    image: '/images/step-3-notify-command.png',
+  },
+  {
+    title: 'Building Smarter, More Resilient Operational Networks',
+    blurb:
+      'Designing operational networks that stay connected when it matters most.',
+    image: '/images/hero-night-ops.png',
+  },
+];
+---
+
+<Base
+  title="Insights | Pluribus Inc"
+  description="News, research, and perspectives from Pluribus on AI, situational awareness, and connected operations."
+>
+  <section class="section section--deep">
+    <div class="container">
+      <span class="eyebrow">Insights</span>
+      <h1>News. Research. Innovations.</h1>
+      <p class="lead">Research, updates, and perspectives from the Pluribus team.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <ul class="post-grid">
+        {
+          posts.map((post) => (
+            <li class="card post">
+              <img src={post.image} alt="" loading="lazy" />
+              <h2>{post.title}</h2>
+              <p>{post.blurb}</p>
+              <p class="post__meta">Article coming soon</p>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="prose">
+        We're preparing our first round of published articles. To be notified when new insights go
+        live — or to talk with the team about any of these topics now —
+        <a href="/contact/">contact us</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .post-grid {
+    list-style: none;
+    margin: 0 0 3rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1.5rem;
+  }
+
+  .post img {
+    border-radius: var(--radius);
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    margin-bottom: 1.25rem;
+  }
+
+  .post h2 {
+    font-size: var(--size-h3);
+  }
+
+  .post__meta {
+    color: var(--muted);
+    font-size: var(--size-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0;
+  }
+</style>
