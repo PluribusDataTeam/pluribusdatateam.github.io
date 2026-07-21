@@ -36,9 +36,11 @@ import Base from '../layouts/Base.astro';
           1640 Boro Place, 4th Floor<br />
           McLean, VA 22102
         </p>
-        <span class="eyebrow contact-grid__spaced">Connect</span>
-        <p>
-          <a href="https://www.linkedin.com/company/pluribus-inc" rel="noopener">LinkedIn</a>
+        <span class="eyebrow contact-grid__spaced">Follow Us</span>
+        <p class="contact-grid__social">
+          <a href="https://www.facebook.com/driveourways" rel="noopener">Facebook</a>
+          <a href="https://www.twitter.com/driveourways" rel="noopener">Twitter</a>
+          <a href="https://www.instagram.com/driveourways/" rel="noopener">Instagram</a>
         </p>
       </div>
     </div>
@@ -85,5 +87,11 @@ import Base from '../layouts/Base.astro';
 
   .contact-grid__spaced {
     margin-top: 1.5rem;
+  }
+
+  .contact-grid__social {
+    display: flex;
+    gap: 1.25rem;
+    margin: 0;
   }
 </style>
