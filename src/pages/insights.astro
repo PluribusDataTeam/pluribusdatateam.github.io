@@ -1,25 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 
-// Placeholder posts from the Figma mockup — replace with real articles
-// (or a content collection) when the team has publishable material.
+// Placeholder post titles verbatim from the Figma mockup — replace with real
+// articles (or a content collection) when the team has publishable material.
 const posts = [
   {
     title: 'Advancing AI for Mission-Critical Decision Support',
-    blurb:
-      'How AI-assisted analysis is changing the speed and quality of operational decisions.',
     image: '/images/step-4-coordinate-response.png',
   },
   {
     title: 'Connected Intelligence for Modern Security Operations',
-    blurb:
-      'Why unified data, communication, and location awareness outperform siloed tools.',
     image: '/images/step-3-notify-command.png',
   },
   {
     title: 'Building Smarter, More Resilient Operational Networks',
-    blurb:
-      'Designing operational networks that stay connected when it matters most.',
     image: '/images/hero-night-ops.png',
   },
 ];
@@ -45,7 +39,6 @@ const posts = [
             <li class="card post">
               <img src={post.image} alt="" loading="lazy" />
               <h2>{post.title}</h2>
-              <p>{post.blurb}</p>
               <p class="post__meta">Article coming soon</p>
             </li>
           ))

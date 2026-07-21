@@ -114,7 +114,9 @@ const isActive = (href: string) =>
           <address class="site-footer__contact">
             <p><a href="mailto:info@pluribusdata.com">info@pluribusdata.com</a></p>
             <p><a href="tel:+15713804740">571-380-4740</a></p>
-            <p>640 Boro Place, 4th Floor<br />McLean, VA 22102</p>
+            <!-- Live site says 1640 Boro Place; the Figma footer says 640 — using the
+                 live site's address until the team confirms which is correct. -->
+            <p>1640 Boro Place, 4th Floor<br />McLean, VA 22102</p>
             <p>
               <a href="https://www.linkedin.com/company/pluribus-inc" rel="noopener">LinkedIn</a>
             </p>
@@ -129,7 +131,11 @@ const isActive = (href: string) =>
         <hr class="hairline" />
       </div>
       <div class="container site-footer__legal">
-        <p>© {new Date().getFullYear()} Pluribus Inc. All Rights Reserved.</p>
+        <p>
+          © {new Date().getFullYear()} Pluribus Inc. All Rights Reserved.<br />
+          Identity-Based Navigation®, IBN®, OurWays™, ANJEL® and Guardian ANJEL® are marks of
+          Pluribus Inc.
+        </p>
         <ul class="site-footer__legal-links">
           <li><a href="/privacy/">Privacy Policy</a></li>
           <li><a href="/terms/">Terms</a></li>

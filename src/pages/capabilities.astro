@@ -2,36 +2,53 @@
 import Base from '../layouts/Base.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
-const capabilities = [
+// Section names from the Figma "Capabilities" page outline; every
+// capability title/description pair is verbatim from the design board.
+const sections = [
   {
     id: 'operational-awareness',
-    eyebrow: 'Operational Awareness',
-    title: 'See everything. As it happens.',
-    text: 'Real-time visibility and monitoring across environments — live geolocation of personnel and assets, incident detection, and complete situational awareness across incidents and teams.',
+    name: 'Operational Awareness',
+    items: [
+      { title: 'Real-Time Awareness', text: 'See everything. As it happens.' },
+      { title: 'Situational Awareness', text: 'Complete visibility across incidents and teams.' },
+      { title: 'Live Geolocation', text: 'Real-time tracking of personnel and assets.' },
+    ],
   },
   {
     id: 'connected-infrastructure',
-    eyebrow: 'Connected Infrastructure',
-    title: 'One platform. One view. Complete clarity.',
-    text: 'Infrastructure integration and connected systems — unifying data, systems, and teams so information flows from the field to the command center without friction.',
+    name: 'Connected Infrastructure',
+    items: [
+      { title: 'Unified Information', text: 'One platform. One view. Complete clarity.' },
+      { title: 'Connected Intelligence', text: 'Unify data, systems, and teams for complete clarity.' },
+      { title: 'Seamlessly Integrated', text: 'Connects with your systems and workflows.' },
+    ],
   },
   {
     id: 'real-time-coordination',
-    eyebrow: 'Real-Time Coordination',
-    title: 'Communication that keeps pace with events.',
-    text: 'Encrypted messaging, live video streaming, and team coordination that connect personnel, command centers, and first responders during critical events.',
+    name: 'Real-Time Coordination',
+    items: [
+      { title: 'Secure Communication', text: 'Encrypted messaging and group coordination.' },
+      { title: 'Live Streaming', text: 'Share live video and images in real time.' },
+      { title: 'Coordinated Action', text: 'The right information to the right people—fast.' },
+    ],
   },
   {
     id: 'ai-analytics',
-    eyebrow: 'AI & Analytics',
-    title: 'Actionable insights. When every second counts.',
-    text: 'AI-powered analytics that fuse and analyze operational data to reveal what matters most — predictive insights and decision support for faster, smarter action.',
+    name: 'AI & Analytics',
+    items: [
+      { title: 'Actionable Insights', text: 'AI-powered analytics reveal what matters most.' },
+      { title: 'Faster Decisions', text: 'Actionable insights. When every second counts.' },
+      { title: 'Faster Response', text: 'Empower teams to act with speed and confidence.' },
+    ],
   },
   {
     id: 'scalable-systems',
-    eyebrow: 'Scalable Systems',
-    title: 'Flexible by design. Ready to grow.',
-    text: 'Technologies that integrate seamlessly with existing systems and adapt across organizations, missions, and environments as needs evolve.',
+    name: 'Scalable Systems',
+    items: [
+      { title: 'Built for Mission', text: 'Engineered for reliability when it matters most.' },
+      { title: 'Secure & Reliable', text: 'Enterprise-grade security and uptime you can trust.' },
+      { title: 'Always Evolving', text: 'Continuously updated to stay ahead of emerging threats.' },
+    ],
   },
 ];
 ---
@@ -43,21 +60,27 @@ const capabilities = [
   <section class="section section--deep">
     <div class="container">
       <span class="eyebrow">Capabilities</span>
-      <h1>Operational &amp; Intelligence Capabilities.</h1>
+      <h1>Continuous Intelligence. Mission Impact.</h1>
       <p class="lead">
-        The operational advantages Pluribus technologies deliver — from first detection to
-        coordinated resolution.
+        Supporting organizations with AI-powered technologies for safer, faster, and more informed
+        decisions.
       </p>
     </div>
   </section>
 
   {
-    capabilities.map((cap, i) => (
-      <section class:list={['section', { 'section--variant': i % 2 === 1 }]} id={cap.id}>
+    sections.map((section, i) => (
+      <section class:list={['section', { 'section--variant': i % 2 === 1 }]} id={section.id}>
         <div class="container">
-          <span class="eyebrow">{cap.eyebrow}</span>
-          <h2>{cap.title}</h2>
-          <p class="prose">{cap.text}</p>
+          <h2>{section.name}</h2>
+          <ul class="cap-grid">
+            {section.items.map((item) => (
+              <li class="card">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     ))
@@ -65,15 +88,12 @@ const capabilities = [
 
   <section class="section section--light" id="highlights">
     <div class="container">
-      <SectionHeading
-        eyebrow="Capability Highlights"
-        title="Continuous Intelligence. Mission Impact."
-      />
+      <SectionHeading eyebrow="Capability Highlights" title="Real-Time Data. Connected Intelligence." />
       <ul class="highlights">
-        <li><strong>Real-Time Data</strong> — ingest from any source, anytime, anywhere.</li>
-        <li><strong>Connected Intelligence</strong> — unify data, systems, and teams for complete clarity.</li>
+        <li><strong>Real-Time Data</strong> — Ingest from any source, anytime, anywhere.</li>
+        <li><strong>Connected Intelligence</strong> — Unify data, systems, and teams for complete clarity.</li>
         <li><strong>Actionable Insights</strong> — AI-powered analytics reveal what matters most.</li>
-        <li><strong>Faster Response</strong> — empower teams to act with speed and confidence.</li>
+        <li><strong>Faster Response</strong> — Empower teams to act with speed and confidence.</li>
       </ul>
     </div>
   </section>
@@ -82,7 +102,7 @@ const capabilities = [
     <div class="container">
       <hr class="hairline" />
       <div class="cta-band__body">
-        <h2>See how these capabilities come together.</h2>
+        <h2>Ready to see Pluribus in action?</h2>
         <div class="cta-band__actions">
           <a class="btn btn--solid" href="/technologies/">Explore Technologies</a>
           <a class="btn btn--ghost" href="/contact/">Request a Demo</a>
@@ -94,6 +114,20 @@ const capabilities = [
 </Base>
 
 <style>
+  .cap-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1.25rem;
+  }
+
+  .cap-grid p {
+    margin: 0;
+    color: var(--text);
+  }
+
   .highlights {
     list-style: none;
     margin: 0;
