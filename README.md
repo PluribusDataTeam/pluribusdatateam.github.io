@@ -76,7 +76,7 @@ There is no form backend yet — the contact page uses a `mailto:` link. To add 
 hosted form later, see the comment in
 [src/pages/contact.astro](src/pages/contact.astro).
 
-## Experimental snapshot (pc-changes branch)
+## Experimental snapshot (ai-figma-july branch)
 
 > **⚠️ Experimental — divergent local changes.** This branch is a local
 > redesign quarantined from `main` on 2026-07-29. It diverges from the
@@ -89,54 +89,54 @@ Full-page desktop captures at 1440px; mobile at 390px.
 
 ### Home
 
-![Home — desktop](docs/screenshots/pc-changes/home-desktop.png)
+![Home — desktop](docs/screenshots/ai-figma-july/home-desktop.png)
 
-<img src="docs/screenshots/pc-changes/home-mobile.png" alt="Home — mobile" width="390">
+<img src="docs/screenshots/ai-figma-july/home-mobile.png" alt="Home — mobile" width="390">
 
 ### Capabilities
 
-![Capabilities — desktop](docs/screenshots/pc-changes/capabilities-desktop.png)
+![Capabilities — desktop](docs/screenshots/ai-figma-july/capabilities-desktop.png)
 
 ### Technologies
 
-![Technologies — desktop](docs/screenshots/pc-changes/technologies-desktop.png)
+![Technologies — desktop](docs/screenshots/ai-figma-july/technologies-desktop.png)
 
 ### Environments
 
-![Environments — desktop](docs/screenshots/pc-changes/environments-desktop.png)
+![Environments — desktop](docs/screenshots/ai-figma-july/environments-desktop.png)
 
 ### Insights
 
-![Insights — desktop](docs/screenshots/pc-changes/insights-desktop.png)
+![Insights — desktop](docs/screenshots/ai-figma-july/insights-desktop.png)
 
 ### Company
 
-![Company — desktop](docs/screenshots/pc-changes/company-desktop.png)
+![Company — desktop](docs/screenshots/ai-figma-july/company-desktop.png)
 
 ### Team
 
-![Team — desktop](docs/screenshots/pc-changes/team-desktop.png)
+![Team — desktop](docs/screenshots/ai-figma-july/team-desktop.png)
 
 Individual bio page (representative):
 
-![Team bio — desktop](docs/screenshots/pc-changes/team-daniel-neustadter-desktop.png)
+![Team bio — desktop](docs/screenshots/ai-figma-july/team-daniel-neustadter-desktop.png)
 
 ### Identity-Based Navigation
 
-![Identity-Based Navigation — desktop](docs/screenshots/pc-changes/identity-based-navigation-desktop.png)
+![Identity-Based Navigation — desktop](docs/screenshots/ai-figma-july/identity-based-navigation-desktop.png)
 
 ### Corporate Social Responsibility
 
-![CSR — desktop](docs/screenshots/pc-changes/csr-desktop.png)
+![CSR — desktop](docs/screenshots/ai-figma-july/csr-desktop.png)
 
 ### Contact
 
-![Contact — desktop](docs/screenshots/pc-changes/contact-desktop.png)
+![Contact — desktop](docs/screenshots/ai-figma-july/contact-desktop.png)
 
 ### Legal & accessibility
 
-![Privacy — desktop](docs/screenshots/pc-changes/privacy-desktop.png)
+![Privacy — desktop](docs/screenshots/ai-figma-july/privacy-desktop.png)
 
-![Terms — desktop](docs/screenshots/pc-changes/terms-desktop.png)
+![Terms — desktop](docs/screenshots/ai-figma-july/terms-desktop.png)
 
-![Accessibility — desktop](docs/screenshots/pc-changes/accessibility-desktop.png)
+![Accessibility — desktop](docs/screenshots/ai-figma-july/accessibility-desktop.png)
