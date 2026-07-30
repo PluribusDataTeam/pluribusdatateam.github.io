@@ -75,3 +75,39 @@ ever moves to a subpath (`…github.io/repo-name/`), set `base: '/repo-name'` in
 There is no form backend yet — the contact page uses a `mailto:` link. To add a
 hosted form later, see the comment in
 [src/pages/contact.astro](src/pages/contact.astro).
+
+## v1 snapshot
+
+Captured 2026-07-29 from the `v1` tag (`origin/main` at the time): a
+point-in-time snapshot that works, but is not the final vision. Full-page
+desktop captures at 1440px; mobile at 390px.
+
+### Home
+
+![Home — desktop](docs/screenshots/v1/home-desktop.png)
+
+<img src="docs/screenshots/v1/home-mobile.png" alt="Home — mobile" width="390">
+
+### Our Technology
+
+![Our Technology — desktop](docs/screenshots/v1/technology-desktop.png)
+
+### About
+
+![About — desktop](docs/screenshots/v1/about-desktop.png)
+
+### Team
+
+![Team — desktop](docs/screenshots/v1/team-desktop.png)
+
+Individual bio page (representative):
+
+![Team bio — desktop](docs/screenshots/v1/team-daniel-neustadter-desktop.png)
+
+### Identity-Based Navigation
+
+![Identity-Based Navigation — desktop](docs/screenshots/v1/identity-based-navigation-desktop.png)
+
+### Contact
+
+![Contact — desktop](docs/screenshots/v1/contact-desktop.png)
