@@ -75,3 +75,68 @@ ever moves to a subpath (`…github.io/repo-name/`), set `base: '/repo-name'` in
 There is no form backend yet — the contact page uses a `mailto:` link. To add a
 hosted form later, see the comment in
 [src/pages/contact.astro](src/pages/contact.astro).
+
+## Experimental snapshot (pc-changes branch)
+
+> **⚠️ Experimental — divergent local changes.** This branch is a local
+> redesign quarantined from `main` on 2026-07-29. It diverges from the
+> deployed v1 site (tagged `v1` on the pre-redesign `origin/main`) with a
+> dark-navy design system, a new information architecture
+> (Capabilities / Technologies / Environments / Insights / Company), and
+> legal/accessibility pages. Nothing here is deployed.
+
+Full-page desktop captures at 1440px; mobile at 390px.
+
+### Home
+
+![Home — desktop](docs/screenshots/pc-changes/home-desktop.png)
+
+<img src="docs/screenshots/pc-changes/home-mobile.png" alt="Home — mobile" width="390">
+
+### Capabilities
+
+![Capabilities — desktop](docs/screenshots/pc-changes/capabilities-desktop.png)
+
+### Technologies
+
+![Technologies — desktop](docs/screenshots/pc-changes/technologies-desktop.png)
+
+### Environments
+
+![Environments — desktop](docs/screenshots/pc-changes/environments-desktop.png)
+
+### Insights
+
+![Insights — desktop](docs/screenshots/pc-changes/insights-desktop.png)
+
+### Company
+
+![Company — desktop](docs/screenshots/pc-changes/company-desktop.png)
+
+### Team
+
+![Team — desktop](docs/screenshots/pc-changes/team-desktop.png)
+
+Individual bio page (representative):
+
+![Team bio — desktop](docs/screenshots/pc-changes/team-daniel-neustadter-desktop.png)
+
+### Identity-Based Navigation
+
+![Identity-Based Navigation — desktop](docs/screenshots/pc-changes/identity-based-navigation-desktop.png)
+
+### Corporate Social Responsibility
+
+![CSR — desktop](docs/screenshots/pc-changes/csr-desktop.png)
+
+### Contact
+
+![Contact — desktop](docs/screenshots/pc-changes/contact-desktop.png)
+
+### Legal & accessibility
+
+![Privacy — desktop](docs/screenshots/pc-changes/privacy-desktop.png)
+
+![Terms — desktop](docs/screenshots/pc-changes/terms-desktop.png)
+
+![Accessibility — desktop](docs/screenshots/pc-changes/accessibility-desktop.png)
