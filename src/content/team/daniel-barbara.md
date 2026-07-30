@@ -5,13 +5,24 @@ headshot: ../../assets/images/team/daniel-barbara.jpg
 order: 5
 ---
 
-Dr. Barbará serves as a Research Partner for Pluribus Inc., focusing on Air Force STTR/SBIR research initiatives. Since 1997, he has been teaching at George Mason University, specializing in data mining and machine learning. He chaired the SIAM International Conference on Data Mining in 2003 and has secured numerous grants from the National Science Foundation, the Army, and other federal and state agencies.
+Dr. Daniel Barbará is a research partner for PLURIBUS Inc., in the areas of Air Force STTR/SBIR research and development. Dr. Barbará has taught at George Mason University since 1997. His areas of expertise are data mining and machine learning. He served as the program chair of the SIAM International Conference on Data Mining in 2003, and he has received numerous grants from the National Science Foundation, the Army, and other federal and state institutions.
 
-His recent research projects include:
+Research:
 
-- 2023–2024: STTR Phase I on Metadata Overlay and Live Streaming Security Incident Reporting (U.S. Air Force / AFWERX)
-- 2012–2015: NSF-funded experimental infrastructure for wireless computing and cybersecurity research
-- 2012–2013: Army-funded geospatial anomaly detection research
-- 2011: Visualization tool development for sensing and surveillance systems
+2023 - 2024: STTR Phase I - Metadata Overlay + Live Streaming and Geolocating Security Incident Reporting System. Funded by the U.S. Air Force - AFWERX
 
-He was recognized as Outstanding Researcher by the Computer Science Department at George Mason University. He holds a PhD and an MS in Computer Science from Princeton University, and a BS in Electrical Engineering from Universidad Metropolitana.
+2012 - 2015 : II-NEW: An Experimental Infrastructures for Cross-domain Research in Wireless Computing, Cybersecurity, and Data Mining. Funded by the National Science Foundation.
+
+2012 - 2013: Discovering Area Anomalies to Support Detection of Geospatial Stressing Factors. Funded by the US Army.
+
+2011 - 2011: A visualization and analysis tool for a large-scale sensing and surveillance system. Funded by Invertix Corp.
+
+Honors and Awards:
+
+- Outstanding Researcher, CS Department, George Mason University
+
+Degrees:
+
+- PhD, Computer Science, Princeton University
+- MS, Computer Science, Princeton University
+- BS, Electrical Engineering, Universidad Metropolitana

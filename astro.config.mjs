@@ -6,4 +6,6 @@ export default defineConfig({
   // Update to https://pluribusdata.com when the custom domain moves over
   site: 'https://pluribusdatateam.github.io',
   trailingSlash: 'ignore',
+  // Keep source copy byte-identical to pluribusdata.com (no smart quotes/dashes)
+  markdown: { smartypants: false },
 });

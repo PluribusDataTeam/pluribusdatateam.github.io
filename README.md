@@ -78,9 +78,10 @@ hosted form later, see the comment in
 
 ## v1 snapshot
 
-Captured 2026-07-29 from the `v1` tag (`origin/main` at the time): a
-point-in-time snapshot that works, but is not the final vision. Full-page
-desktop captures at 1440px; mobile at 390px.
+Captured 2026-07-29 from this branch: the v1 design with all descriptive copy
+restored verbatim from pluribusdata.com (team bios word-for-word as their
+subjects wrote them). The `v1` tag preserves the original point-in-time
+snapshot. Full-page desktop captures at 1440px; mobile at 390px.
 
 ### Home
 
