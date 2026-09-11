@@ -27,12 +27,26 @@ src/
   content/team/*.md          One markdown file per team member (name, title,
                              headshot, order in frontmatter; bio in the body)
   assets/images/             Source images (optimized by Astro at build time)
-  styles/global.css          Design tokens + base styles
+  styles/global.css          Design system: tokens, type scale, buttons,
+                             paper/ink sections, reveal animation
+  components/Radar.astro     Decorative SVG geospatial panel in the home hero
 public/                      Favicon and the Pluribus logo (served as-is)
 ```
 
 To add or edit a team member, add/edit a markdown file in `src/content/team/` and
 drop the headshot in `src/assets/images/team/`.
+
+## Design notes
+
+- **Copy is verbatim** from pluribusdata.com. The redesign changes layout,
+  typography and motion only; do not paraphrase descriptive text.
+- **No runtime third-party dependencies.** Fonts (Archivo, Inter, IBM Plex
+  Mono) are self-hosted through `@fontsource` packages and bundled at build
+  time, so the published site makes no requests to Google Fonts or any CDN.
+  Animations are plain CSS + a small IntersectionObserver; there is no JS
+  framework or UI-component library.
+- Motion respects `prefers-reduced-motion`; reveal animations are gated on a
+  `js` class so content is never hidden without JavaScript.
 
 ## Deploying
 

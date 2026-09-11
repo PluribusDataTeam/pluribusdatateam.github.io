@@ -1,178 +1,595 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import TechCard from '../components/TechCard.astro';
+import Arrow from '../components/Arrow.astro';
+import Radar from '../components/Radar.astro';
+import SectionHead from '../components/SectionHead.astro';
+import anjelLogo from '../assets/images/logo-anjel.png';
+import guardianLogo from '../assets/images/logo-guardian-anjel.png';
+
+const capabilities = [
+  {
+    n: '01',
+    name: 'Big Data',
+    href: '/technology/#big-data',
+    text: 'Founded in 2019, we specialize in making the complex simple, the obscure plain and the unknown known. We do this through a combination of talent and technology, all to derive keen insights that help you live a better life.',
+  },
+  {
+    n: '02',
+    name: 'IBN®',
+    href: '/identity-based-navigation/',
+    text: 'Identity-Based Navigation® is our specialty, focusing on your unique characteristics and how they relate, correlate and interrelate within the settings of your preference, present and future.',
+  },
+  {
+    n: '03',
+    name: 'OurWays™',
+    href: '/technology/#ourways',
+    text: 'OurWays™ is a 21st-century, A.I. & 5G-enabled, geosocial, navigation application currently under development by our award-winning team of full-stack developers, data scientists, research psychologists, geospatial analysts and innovation experts.',
+  },
+  {
+    n: '04',
+    name: 'ANJEL® Tech',
+    href: 'https://www.anjel.tech',
+    external: true,
+    text: 'Designed for individual and family security, ANJEL Tech is a cloud-based, GPS-enabled, live-streaming and recording, Personal Security Service.',
+  },
+  {
+    n: '05',
+    name: 'Guardian ANJEL®',
+    href: 'https://www.guardiananjel.com',
+    external: true,
+    text: 'Designed for military installation security, Guardian ANJEL enhances military security with real-time, first-person intelligence. Turning every smartphone into a GPS-enabled, live-streaming, incident-reporting tool, we empower Security Forces to respond faster and smarter. Because when seconds matter, Guardian ANJEL delivers.',
+  },
+];
+
+const ticker = ['Big Data', 'Geosocial Analytics', 'Geospatial Analytics', 'Identity-Based Navigation®', 'OurWays™', 'ANJEL® Tech', 'Guardian ANJEL®'];
 ---
 
-<Base title="Home | Pluribus Inc">
-  <section class="hero section--black">
+<Base title="Pluribus Inc. | Big Data, Geosocial & Geospatial Analytics" overlay>
+  <!-- Hero ------------------------------------------------------------ -->
+  <section class="hero">
+    <div class="grid-bg"></div>
+    <div class="hero__glow"></div>
+
     <div class="container hero__inner">
-      <img
-        class="hero__logo"
-        src="/images/logo-pluribus.png"
-        alt="Pluribus"
-        width="840"
-        height="212"
-        fetchpriority="high"
-      />
-      <h1>Providing a personalized, safer world for each person!</h1>
-      <p class="lead">
-        Pluribus Inc. is a big data, geosocial &amp; geospatial analytics company.
-      </p>
-      <div class="hero__actions">
-        <a class="btn btn--solid" href="/technology/">Explore Our Technology</a>
-        <a class="btn btn--ghost" href="/contact/">Get in Touch</a>
+      <div class="hero__copy">
+        <p class="eyebrow reveal is-in">Big data · Geosocial · Geospatial analytics</p>
+        <h1 class="display reveal is-in" data-delay="1">
+          Providing a personalized, <span class="accent">safer world</span> for each person!
+        </h1>
+        <p class="lead reveal is-in" data-delay="2">
+          Pluribus Inc. is a big data, geosocial &amp; geospatial analytics company.
+        </p>
+        <div class="hero__actions reveal is-in" data-delay="3">
+          <a class="btn btn--primary" href="/technology/">Explore Our Technology <Arrow /></a>
+          <a class="btn btn--ghost" href="/contact/">Get in Touch</a>
+        </div>
+        <dl class="hero__facts reveal is-in" data-delay="4">
+          <div><dt>Founded</dt><dd>2019</dd></div>
+          <div><dt>Headquarters</dt><dd>McLean, Virginia</dd></div>
+          <div><dt>Specialty</dt><dd>Identity-Based Navigation®</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero__visual reveal is-in" data-delay="2">
+        <Radar />
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        {[...ticker, ...ticker].map((t) => <span class="ticker__item">{t}</span>)}
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- Capabilities ---------------------------------------------------- -->
+  <section class="section" id="what-we-build">
     <div class="container">
-      <SectionHeading eyebrow="Our Technology" title="What we build" />
-      <div class="tech-grid">
-        <TechCard number="01" name="Big Data" href="/technology/#big-data">
-          Founded in 2019, we specialize in making the complex simple, the obscure plain and the
-          unknown known. We do this through a combination of talent and technology, all to derive
-          keen insights that help you live a better life.
-        </TechCard>
-        <TechCard number="02" name="IBN®" href="/identity-based-navigation/">
-          Identity-Based Navigation® is our specialty, focusing on your unique characteristics and
-          how they relate, correlate and interrelate within the settings of your preference,
-          present and future.
-        </TechCard>
-        <TechCard number="03" name="OurWays™" href="/technology/#ourways">
-          OurWays™ is a 21st-century, A.I. &amp; 5G-enabled, geosocial, navigation application
-          currently under development by our award-winning team of full-stack developers, data
-          scientists, research psychologists, geospatial analysts and innovation experts.
-        </TechCard>
-        <TechCard number="04" name="ANJEL® Tech" href="https://www.anjel.tech" external>
-          Designed for individual and family security, ANJEL Tech is a cloud-based, GPS-enabled,
-          live-streaming and recording, Personal Security Service.
-        </TechCard>
-        <TechCard number="05" name="Guardian ANJEL®" href="https://www.guardiananjel.com" external>
-          Designed for military installation security, Guardian ANJEL enhances military security
-          with real-time, first-person intelligence. Turning every smartphone into a GPS-enabled,
-          live-streaming, incident-reporting tool, we empower Security Forces to respond faster and
-          smarter. Because when seconds matter, Guardian ANJEL delivers.
-        </TechCard>
+      <SectionHead eyebrow="Our Technology" title="What we build" aside="01 — 05" />
+
+      <ol class="caps">
+        {
+          capabilities.map((c, i) => (
+            <li class="reveal" data-delay={String(Math.min(i + 1, 5))}>
+              <a
+                class="caps__row"
+                href={c.href}
+                target={c.external ? '_blank' : undefined}
+                rel={c.external ? 'noopener' : undefined}
+              >
+                <span class="caps__n mono">{c.n}</span>
+                <h3 class="caps__name">{c.name}</h3>
+                <p class="caps__text">{c.text}</p>
+                <span class="caps__cta link">
+                  {c.external ? 'Visit site' : 'Learn more'}
+                  <Arrow />
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Mission (paper) -------------------------------------------------- -->
+  <section class="section paper mission">
+    <div class="container">
+      <div class="mission__grid">
+        <div class="mission__main reveal">
+          <span class="eyebrow">Our Mission</span>
+          <p class="mission__text">
+            We were created to tell every person in the world where they are, based on who they are;
+            to help every person in the world make smarter decisions about where they go and how they
+            get there, based on who they are; to make the world a safer and better place for each and
+            every person, based on who they are; and to lead the world in Identity-Based Navigation®.
+          </p>
+          <a class="btn btn--dark" href="/about/">More about us <Arrow /></a>
+        </div>
+
+        <aside class="mission__vision reveal" data-delay="2">
+          <span class="eyebrow">Our Vision</span>
+          <p class="mission__vision-text">
+            Intelligent, Identity-Based Navigation® for human- and machinekind.
+          </p>
+          <svg class="mission__mark" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+            <circle cx="60" cy="60" r="56" stroke="currentColor" stroke-opacity="0.18" />
+            <circle cx="60" cy="60" r="36" stroke="currentColor" stroke-opacity="0.28" stroke-dasharray="3 5" />
+            <path d="M60 4v20M60 96v20M4 60h20M96 60h20" stroke="currentColor" stroke-opacity="0.4" />
+            <circle cx="60" cy="60" r="5" fill="currentColor" />
+          </svg>
+        </aside>
       </div>
     </div>
   </section>
 
-  <section class="section section--alt">
-    <div class="container mission">
-      <div>
-        <SectionHeading eyebrow="About Pluribus" title="Our mission" />
-        <p class="mission__text">
-          We were created to tell every person in the world where they are, based on who they are;
-          to help every person in the world make smarter decisions about where they go and how they
-          get there, based on who they are; to make the world a safer and better place for each and
-          every person, based on who they are; and to lead the world in Identity-Based Navigation®.
-        </p>
-        <a class="btn btn--ghost" href="/about/">More about us</a>
+  <!-- Products --------------------------------------------------------- -->
+  <section class="section products">
+    <div class="container">
+      <SectionHead eyebrow="04 / 05" title="ANJEL® Tech & Guardian ANJEL®" aside="anjel.tech · guardiananjel.com" />
+
+      <div class="products__grid">
+        <a class="product reveal" href="https://www.anjel.tech" rel="noopener" target="_blank" data-delay="1">
+          <div class="product__logo product__logo--gold">
+            <Image src={anjelLogo} alt="" width="320" height="320" />
+          </div>
+          <div class="product__body">
+            <span class="eyebrow">04 / ANJEL® Tech</span>
+            <h3>ANJEL® Tech</h3>
+            <p>
+              Designed for individual and family security, ANJEL Tech is a cloud-based, GPS-enabled,
+              live-streaming and recording, Personal Security Service.
+            </p>
+            <span class="link">Visit anjel.tech <Arrow /></span>
+          </div>
+        </a>
+
+        <a class="product reveal" href="https://www.guardiananjel.com" rel="noopener" target="_blank" data-delay="2">
+          <div class="product__logo product__logo--blue">
+            <Image src={guardianLogo} alt="" width="320" height="320" />
+          </div>
+          <div class="product__body">
+            <span class="eyebrow">05 / Guardian ANJEL®</span>
+            <h3>Guardian ANJEL®</h3>
+            <p>
+              Designed for military installation security, Guardian ANJEL enhances military security
+              with real-time, first-person intelligence. Turning every smartphone into a GPS-enabled,
+              live-streaming, incident-reporting tool, we empower Security Forces to respond faster and
+              smarter. Because when seconds matter, Guardian ANJEL delivers.
+            </p>
+            <span class="link">Visit guardiananjel.com <Arrow /></span>
+          </div>
+        </a>
       </div>
-      <div class="mission__vision card">
-        <span class="eyebrow">Our Vision</span>
-        <p class="mission__vision-text">
-          Intelligent, Identity-Based Navigation® for human- and machinekind.
-        </p>
-      </div>
+
+      <p class="products__tagline reveal">
+        See Something - Say Something - <strong>STREAM Something!™</strong>
+      </p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container cta-band card">
-      <div>
-        <h2>Request More Info</h2>
-        <p class="cta-band__text">Connect with us!</p>
+  <!-- CTA -------------------------------------------------------------- -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="cta reticle reveal">
+        <div class="grid-bg"></div>
+        <div class="cta__inner">
+          <div>
+            <span class="eyebrow">Request More Info</span>
+            <h2>Connect with us!</h2>
+          </div>
+          <a class="btn btn--primary" href="/contact/">Contact Us <Arrow /></a>
+        </div>
       </div>
-      <a class="btn btn--solid" href="/contact/">Contact Us</a>
     </div>
   </section>
 </Base>
 
 <style>
+  /* Hero ----------------------------------------------------------- */
+
   .hero {
-    padding-block: clamp(4rem, 10vw, 8rem);
-    text-align: center;
+    position: relative;
+    background: var(--ink-950);
+    padding-top: calc(76px + clamp(3rem, 8vw, 6rem));
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero__glow {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    max-width: 900px;
+    max-height: 900px;
+    background: radial-gradient(circle, rgba(198, 234, 61, 0.12), transparent 60%);
+    filter: blur(40px);
+    pointer-events: none;
   }
 
   .hero__inner {
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(2rem, 6vw, 5rem);
     align-items: center;
+    padding-bottom: clamp(3rem, 8vw, 6rem);
   }
 
-  .hero__logo {
-    width: min(560px, 86vw);
-    height: auto;
-    margin-bottom: 2.5rem;
+  @media (max-width: 960px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__visual {
+      max-width: 440px;
+    }
   }
 
   .hero h1 {
-    max-width: 22ch;
-  }
-
-  .hero .lead {
-    margin-inline: auto;
+    margin-bottom: 1.5rem;
+    max-width: 14ch;
   }
 
   .hero__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+    gap: 0.75rem;
     margin-top: 2rem;
   }
 
-  .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+  .hero__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 3rem;
+    margin: 3rem 0 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
   }
+
+  .hero__facts dt {
+    font-family: var(--font-mono);
+    font-size: var(--fs--2);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .hero__facts dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--fs-0);
+  }
+
+  /* Ticker */
+  .ticker {
+    position: relative;
+    border-top: 1px solid var(--line);
+    padding-block: 0.9rem;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .ticker__track {
+    display: flex;
+    gap: 3rem;
+    width: max-content;
+    animation: ticker 40s linear infinite;
+  }
+
+  .ticker__item {
+    font-family: var(--font-mono);
+    font-size: var(--fs--2);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .ticker__item::before {
+    content: '◆';
+    color: var(--signal);
+    font-size: 0.55em;
+    margin-right: 3rem;
+    vertical-align: middle;
+  }
+
+  @keyframes ticker {
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker__track { animation: none; }
+  }
+
+  /* Capabilities --------------------------------------------------- */
+
+  .caps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .caps__row {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 0.9fr) minmax(0, 1.6fr) auto;
+    gap: 1.5rem 2.5rem;
+    align-items: start;
+    padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    position: relative;
+    transition: padding-left 0.3s var(--ease-out);
+  }
+
+  .caps__row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: -1px;
+    width: 3px;
+    background: var(--signal);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s var(--ease-out);
+  }
+
+  .caps__row:hover {
+    padding-left: 1.25rem;
+  }
+
+  .caps__row:hover::before {
+    transform: scaleY(1);
+  }
+
+  .caps__n {
+    color: var(--signal);
+    font-size: var(--fs--1);
+    padding-top: 0.5rem;
+  }
+
+  .caps__name {
+    font-size: var(--fs-2);
+    margin: 0;
+  }
+
+  .caps__text {
+    margin: 0;
+    color: var(--text-2);
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
+
+  .caps__cta {
+    padding-top: 0.4rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .caps__row:hover .caps__cta {
+    opacity: 1;
+  }
+
+  @media (max-width: 860px) {
+    .caps__row {
+      grid-template-columns: 3rem minmax(0, 1fr);
+      gap: 0.75rem 1rem;
+    }
+
+    .caps__text,
+    .caps__cta {
+      grid-column: 2;
+    }
+
+    .caps__row:hover {
+      padding-left: 0.75rem;
+    }
+  }
+
+  /* Mission -------------------------------------------------------- */
 
   .mission {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 3rem;
-    align-items: center;
+    background-image: radial-gradient(rgba(10, 13, 19, 0.16) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
 
-  @media (max-width: 820px) {
-    .mission {
+  .mission__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: stretch;
+  }
+
+  @media (max-width: 860px) {
+    .mission__grid {
       grid-template-columns: 1fr;
     }
   }
 
   .mission__text {
-    margin-bottom: 2rem;
+    font-family: var(--font-display);
+    font-weight: 520;
+    font-size: var(--fs-2);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--paper-text);
+    margin-bottom: 2.25rem;
+    text-wrap: pretty;
   }
 
   .mission__vision {
-    border-left: 4px solid var(--color-accent);
+    position: relative;
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.55);
+    overflow: hidden;
   }
 
   .mission__vision-text {
-    font-size: var(--size-step-1);
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-weight: 640;
+    font-size: var(--fs-2);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
     margin: 0;
+    max-width: 16ch;
+    position: relative;
   }
 
-  .cta-band {
+  .mission__mark {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: 46%;
+    color: var(--paper-text);
+    opacity: 0.5;
+  }
+
+  /* Products ------------------------------------------------------- */
+
+  .products__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 860px) {
+    .products__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .product {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 1.75rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(160deg, var(--ink-800), var(--ink-900));
+    color: var(--text);
+    transition: border-color 0.3s ease, transform 0.4s var(--ease-out);
+  }
+
+  .product:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-4px);
+  }
+
+  @media (max-width: 560px) {
+    .product {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .product__logo {
+    position: relative;
+    align-self: start;
+    border-radius: 50%;
+  }
+
+  .product__logo::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    border-radius: 50%;
+    filter: blur(28px);
+    opacity: 0.35;
+    z-index: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .product:hover .product__logo::before {
+    opacity: 0.6;
+  }
+
+  .product__logo--gold::before { background: #c8963e; }
+  .product__logo--blue::before { background: #2f7fd6; }
+
+  .product__logo img {
+    position: relative;
+    width: 150px;
+    height: 150px;
+  }
+
+  .product__body h3 {
+    font-size: var(--fs-2);
+  }
+
+  .product__body p {
+    color: var(--text-2);
+    text-wrap: pretty;
+  }
+
+  .products__tagline {
+    margin: clamp(3rem, 6vw, 5rem) 0 0;
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--fs-2);
+    letter-spacing: -0.02em;
+    color: var(--text-2);
+  }
+
+  .products__tagline strong {
+    color: var(--signal);
+    font-weight: 700;
+  }
+
+  /* CTA ------------------------------------------------------------ */
+
+  .cta {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(2.5rem, 6vw, 4.5rem);
+    border: 1px solid var(--line-strong);
+    background: var(--ink-950);
+  }
+
+  .cta .grid-bg {
+    mask-image: radial-gradient(ellipse at 10% 50%, #000 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 10% 50%, #000 10%, transparent 70%);
+  }
+
+  .cta__inner {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    padding: clamp(2rem, 5vw, 3.5rem);
   }
 
-  .cta-band h2 {
-    margin-bottom: 0.4rem;
-  }
-
-  .cta-band__text {
-    color: var(--color-muted);
+  .cta h2 {
     margin: 0;
   }
 </style>

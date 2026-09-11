@@ -2,37 +2,57 @@
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
+import Arrow from '../../components/Arrow.astro';
 
 export async function getStaticPaths() {
-  const members = await getCollection('team');
-  return members.map((member) => ({
+  const members = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+  return members.map((member, i) => ({
     params: { slug: member.id },
-    props: { member },
+    props: {
+      member,
+      prev: members[(i - 1 + members.length) % members.length],
+      next: members[(i + 1) % members.length],
+      index: i,
+    },
   }));
 }
 
-const { member } = Astro.props;
+const { member, prev, next, index } = Astro.props;
 const { Content } = await render(member);
 ---
 
 <Base title={`${member.data.name} | Pluribus Inc`} description={`${member.data.name}, ${member.data.title} at Pluribus Inc.`}>
-  <section class="section">
-    <div class="container bio">
-      <div class="bio__sidebar">
-        <Image
-          src={member.data.headshot}
-          alt={`Portrait of ${member.data.name}`}
-          width="640"
-          class="bio__photo"
-        />
-        <a class="bio__back" href="/team/">← Back to Team</a>
-      </div>
-      <div>
+  <section class="bio">
+    <div class="container bio__grid">
+      <aside class="bio__side">
+        <div class="bio__frame reticle">
+          <Image src={member.data.headshot} alt={`Portrait of ${member.data.name}`} width="720" height="900" class="bio__photo" />
+        </div>
+        <dl class="bio__meta">
+          <div><dt>Name</dt><dd>{member.data.name}</dd></div>
+          <div><dt>Role</dt><dd>{member.data.title}</dd></div>
+          <div><dt>Index</dt><dd class="mono">{String(index + 1).padStart(2, '0')}</dd></div>
+        </dl>
+        <a class="link bio__back" href="/team/"><span class="bio__back-arrow"><Arrow /></span> Back to Team</a>
+      </aside>
+
+      <div class="bio__main">
         <span class="eyebrow">{member.data.title}</span>
         <h1>{member.data.name}</h1>
-        <div class="prose">
+        <div class="prose bio__content">
           <Content />
         </div>
+
+        <nav class="bio__nav" aria-label="Other team members">
+          <a href={`/team/${prev.id}/`}>
+            <span class="mono">Previous</span>
+            <strong>{prev.data.name}</strong>
+          </a>
+          <a href={`/team/${next.id}/`} class="bio__nav-next">
+            <span class="mono">Next</span>
+            <strong>{next.data.name}</strong>
+          </a>
+        </nav>
       </div>
     </div>
   </section>
@@ -40,36 +60,138 @@ const { Content } = await render(member);
 
 <style>
   .bio {
+    padding-block: clamp(3rem, 7vw, 6rem) var(--section);
+  }
+
+  .bio__grid {
     display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 3rem;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 6rem);
     align-items: start;
   }
 
-  @media (max-width: 820px) {
-    .bio {
+  @media (max-width: 860px) {
+    .bio__grid {
       grid-template-columns: 1fr;
     }
 
-    .bio__sidebar {
-      max-width: 320px;
+    .bio__side {
+      max-width: 360px;
     }
+  }
+
+  .bio__side {
+    position: sticky;
+    top: calc(76px + 2rem);
+  }
+
+  .bio__frame {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
   }
 
   .bio__photo {
     width: 100%;
-    height: auto;
-    border-radius: var(--radius);
-    border: 1px solid var(--color-border);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .bio__meta {
+    margin: 1.5rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .bio__meta > div {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: var(--fs--1);
+  }
+
+  .bio__meta dt {
+    font-family: var(--font-mono);
+    font-size: var(--fs--2);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 0.15rem;
+  }
+
+  .bio__meta dd {
+    margin: 0;
   }
 
   .bio__back {
-    display: inline-block;
     margin-top: 1.25rem;
+  }
+
+  .bio__back-arrow {
+    display: inline-flex;
+    transform: rotate(180deg);
+  }
+
+  .bio__main h1 {
+    font-size: var(--fs-4);
+    margin-bottom: 2rem;
+  }
+
+  .bio__content {
+    font-size: var(--fs-1);
+  }
+
+  .bio__nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: clamp(3rem, 6vw, 4.5rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .bio__nav a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .bio__nav a:hover {
+    border-color: var(--line-strong);
+    background: var(--ink-800);
+  }
+
+  .bio__nav .mono {
+    color: var(--muted);
+    font-size: var(--fs--2);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .bio__nav strong {
+    font-family: var(--font-display);
     font-weight: 600;
   }
 
-  .bio h1 {
-    font-size: var(--size-step-3);
+  .bio__nav-next {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  @media (max-width: 520px) {
+    .bio__nav {
+      grid-template-columns: 1fr;
+    }
+
+    .bio__nav-next {
+      text-align: left;
+      align-items: flex-start;
+    }
   }
 </style>

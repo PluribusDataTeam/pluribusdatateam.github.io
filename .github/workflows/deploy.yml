@@ -2,7 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    # redesign-2026-09 is deployed for preview while the redesign is reviewed;
+    # drop it from this list when the branch is merged.
+    branches: [main, redesign-2026-09]
   workflow_dispatch:
 
 permissions:

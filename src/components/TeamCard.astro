@@ -7,52 +7,80 @@ interface Props {
   title: string;
   href: string;
   headshot: ImageMetadata;
+  index: number;
 }
 
-const { name, title, href, headshot } = Astro.props;
+const { name, title, href, headshot, index } = Astro.props;
 ---
 
-<a class="team-card card" href={href}>
-  <Image src={headshot} alt={`Portrait of ${name}`} width="480" height="480" class="team-card__photo" />
-  <h3>{name}</h3>
-  <p>{title}</p>
+<a class="team-card reveal" href={href} data-delay={String((index % 4) + 1)}>
+  <div class="team-card__frame">
+    <Image src={headshot} alt={`Portrait of ${name}`} width="640" height="800" class="team-card__photo" />
+    <span class="team-card__index mono">{String(index + 1).padStart(2, '0')}</span>
+  </div>
+  <div class="team-card__meta">
+    <h3>{name}</h3>
+    <p>{title}</p>
+  </div>
 </a>
 
 <style>
   .team-card {
     display: block;
-    color: var(--color-text);
-    text-align: center;
-    padding: 1.5rem;
-    transition: border-color 0.15s ease, transform 0.15s ease;
+    color: var(--text);
   }
 
-  .team-card:hover {
-    text-decoration: none;
-    color: var(--color-text);
-    border-color: var(--color-accent);
-    transform: translateY(-3px);
+  .team-card__frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    background: var(--ink-800);
   }
 
   .team-card__photo {
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
-    border-radius: calc(var(--radius) - 4px);
-    margin-bottom: 1.25rem;
+    object-position: top;
+    filter: grayscale(1) contrast(1.05);
+    transition: filter 0.5s var(--ease-out), transform 0.7s var(--ease-out);
+  }
+
+  .team-card:hover .team-card__photo,
+  .team-card:focus-visible .team-card__photo {
+    filter: none;
+    transform: scale(1.03);
+  }
+
+  .team-card__index {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(5, 7, 11, 0.7);
+    color: var(--signal);
+    font-size: var(--fs--2);
+    letter-spacing: 0.12em;
+    backdrop-filter: blur(6px);
+  }
+
+  .team-card__meta {
+    padding-top: 1rem;
   }
 
   .team-card h3 {
-    font-size: var(--size-step-0);
-    margin-bottom: 0.25rem;
+    font-size: var(--fs-1);
+    margin-bottom: 0.2rem;
   }
 
   .team-card p {
-    color: var(--color-accent);
-    font-size: var(--size-step--1);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
     margin: 0;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--fs--2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 </style>

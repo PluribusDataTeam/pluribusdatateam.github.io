@@ -10,11 +10,16 @@ const members = (await getCollection('team')).sort((a, b) => a.data.order - b.da
   title="Team PLURIBUS | Pluribus Inc"
   description="Meet the Pluribus Inc. leadership team, advisors and partners."
 >
-  <section class="section section--black">
+  <section class="page-head">
+    <div class="grid-bg"></div>
     <div class="container">
       <span class="eyebrow">Team Pluribus</span>
       <h1>Meet the Team!</h1>
       <p class="lead">Click on their picture for a detailed corporate biography of each officer.</p>
+      <div class="page-head__meta">
+        <span>{members.length} people</span>
+        <span>Leadership · Advisors · Partners</span>
+      </div>
     </div>
   </section>
 
@@ -22,12 +27,13 @@ const members = (await getCollection('team')).sort((a, b) => a.data.order - b.da
     <div class="container">
       <div class="team-grid">
         {
-          members.map((member) => (
+          members.map((member, i) => (
             <TeamCard
               name={member.data.name}
               title={member.data.title}
               headshot={member.data.headshot}
               href={`/team/${member.id}/`}
+              index={i}
             />
           ))
         }
@@ -39,7 +45,20 @@ const members = (await getCollection('team')).sort((a, b) => a.data.order - b.da
 <style>
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem 1.5rem;
+  }
+
+  @media (max-width: 1000px) {
+    .team-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 700px) {
+    .team-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 1rem;
+    }
   }
 </style>

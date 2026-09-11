@@ -1,93 +1,126 @@
 ---
 import Base from '../layouts/Base.astro';
+import Arrow from '../components/Arrow.astro';
 ---
 
 <Base
   title="Contact | Pluribus Inc"
   description="Connect with Pluribus Inc. — info@pluribusdata.com, 571-380-4740, McLean, Virginia."
 >
-  <section class="section section--black">
+  <section class="page-head">
+    <div class="grid-bg"></div>
     <div class="container">
       <span class="eyebrow">Contact</span>
       <h1>Connect with us!</h1>
+      <div class="page-head__meta">
+        <span>McLean, VA</span>
+        <span>38.92° N · 77.23° W</span>
+      </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container contact-grid">
-      <div class="card">
+    <div class="container contact">
+      <div class="contact__primary reveal">
         <span class="eyebrow">Email</span>
-        <p class="contact-grid__big">
-          <a href="mailto:info@pluribusdata.com">info@pluribusdata.com</a>
-        </p>
-        <a class="btn btn--solid" href="mailto:info@pluribusdata.com?subject=Request%20More%20Information">
-          Request More Information
+        <a class="contact__email" href="mailto:info@pluribusdata.com">info@pluribusdata.com</a>
+        <a class="btn btn--primary" href="mailto:info@pluribusdata.com?subject=Request%20More%20Information">
+          Request More Information <Arrow />
         </a>
       </div>
-      <div class="card">
-        <span class="eyebrow">Phone</span>
-        <p class="contact-grid__big"><a href="tel:+15713804740">571-380-4740</a></p>
-        <span class="eyebrow contact-grid__spaced">Office</span>
-        <p>
-          1640 Boro Place, 4th Floor<br />
-          McLean, VA 22102
-        </p>
-        <span class="eyebrow contact-grid__spaced">Follow Us</span>
-        <p class="contact-grid__social">
-          <a href="https://www.facebook.com/driveourways" rel="noopener">Facebook</a>
-          <a href="https://www.twitter.com/driveourways" rel="noopener">Twitter</a>
-          <a href="https://www.instagram.com/driveourways/" rel="noopener">Instagram</a>
-        </p>
-      </div>
+
+      <dl class="contact__details reveal" data-delay="2">
+        <div>
+          <dt>Phone</dt>
+          <dd><a href="tel:+15713804740">571-380-4740</a></dd>
+        </div>
+        <div>
+          <dt>Office</dt>
+          <dd>1640 Boro Place, 4th Floor<br />McLean, VA 22102</dd>
+        </div>
+        <div>
+          <dt>Follow Us</dt>
+          <dd class="contact__social">
+            <a href="https://www.facebook.com/driveourways" rel="noopener" target="_blank">Facebook</a>
+            <a href="https://www.twitter.com/driveourways" rel="noopener" target="_blank">Twitter</a>
+            <a href="https://www.instagram.com/driveourways/" rel="noopener" target="_blank">Instagram</a>
+          </dd>
+        </div>
+      </dl>
     </div>
     <!--
       No form backend yet (site is fully static). To add a hosted form later,
       replace the mailto button above with a <form> posting to a form service
-      endpoint (e.g. Formspree/Basin): <form action="https://..." method="POST">.
+      endpoint: <form action="https://..." method="POST">.
     -->
   </section>
 </Base>
 
 <style>
-  .contact-grid {
+  .contact {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    align-items: stretch;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
   }
 
-  @media (max-width: 720px) {
-    .contact-grid {
+  @media (max-width: 860px) {
+    .contact {
       grid-template-columns: 1fr;
     }
   }
 
-  .contact-grid__big {
-    font-size: var(--size-step-1);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+  .contact__email {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 640;
+    font-size: var(--fs-3);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+    overflow-wrap: anywhere;
+    transition: color 0.2s ease;
   }
 
-  .contact-grid__big a {
-    color: var(--color-text);
+  .contact__email:hover {
+    color: var(--signal);
   }
 
-  .contact-grid__big a:hover {
-    color: var(--color-accent);
-  }
-
-  .contact-grid__note {
-    color: var(--color-muted);
-    margin-bottom: 1.5rem;
-  }
-
-  .contact-grid__spaced {
-    margin-top: 1.5rem;
-  }
-
-  .contact-grid__social {
-    display: flex;
-    gap: 1.25rem;
+  .contact__details {
     margin: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .contact__details > div {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact__details dt {
+    font-family: var(--font-mono);
+    font-size: var(--fs--2);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 0.2rem;
+  }
+
+  .contact__details dd {
+    margin: 0;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  .contact__details a:hover {
+    color: var(--signal);
+  }
+
+  .contact__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
   }
 </style>
