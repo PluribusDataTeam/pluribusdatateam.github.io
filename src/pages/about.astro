@@ -37,7 +37,7 @@ const values = [
     <div class="container about-grid">
       <div class="about-mission reveal">
         <span class="eyebrow">Our Mission</span>
-        <p class="about-mission__text">
+        <p class="about-mission__text" data-words>
           We were created to tell every person in the world where they are, based on who they are;
           to help every person in the world make smarter decisions about where they go and how they
           get there, based on who they are; to make the world a safer and better place for each and
@@ -45,7 +45,7 @@ const values = [
           Navigation®.
         </p>
       </div>
-      <div class="about-vision reveal" data-delay="2">
+      <div class="about-vision reveal" data-delay="2" data-tilt="4">
         <span class="eyebrow">Our Vision</span>
         <p class="about-vision__text">
           Intelligent, Identity-Based Navigation® for human- and machinekind.
@@ -79,7 +79,7 @@ const values = [
       <ol class="values">
         {
           values.map((value, i) => (
-            <li class="values__item reveal" data-delay={String(i + 1)}>
+            <li class="values__item reveal" data-delay={String(i + 1)} data-spotlight>
               <span class="values__n mono">{String(i + 1).padStart(2, '0')}</span>
               <h3>{value.name}</h3>
               <p>{value.text}</p>

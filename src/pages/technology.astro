@@ -45,7 +45,7 @@ const index = [
     </aside>
 
     <div class="tech__body">
-      <article class="tech-item reveal" id="big-data">
+      <article class="tech-item reveal" data-index-target id="big-data">
         <span class="eyebrow">01 / Big Data</span>
         <h2>Big data, geosocial &amp; geospatial analytics</h2>
         <div class="tech-item__grid">
@@ -55,13 +55,13 @@ const index = [
             known. We do this through a combination of talent and technology, all to derive keen
             insights that help you live a better life.
           </p>
-          <figure class="tech-item__figure reticle">
-            <Image src={bigDataImage} alt="Data analytics visualization" width="880" />
+          <figure class="tech-item__figure reticle" data-tilt="3">
+            <Image src={bigDataImage} alt="Data analytics visualization" width="880" data-parallax="0.06" />
           </figure>
         </div>
       </article>
 
-      <article class="tech-item reveal" id="ibn">
+      <article class="tech-item reveal" data-index-target id="ibn">
         <span class="eyebrow">02 / IBN®</span>
         <h2>Identity-Based Navigation®</h2>
         <p class="prose">
@@ -74,7 +74,7 @@ const index = [
         <a class="btn btn--ghost" href="/identity-based-navigation/">Deep dive: IBN® &amp; OurWays™ <Arrow /></a>
       </article>
 
-      <article class="tech-item reveal" id="ourways">
+      <article class="tech-item reveal" data-index-target id="ourways">
         <span class="eyebrow">03 / OurWays™</span>
         <h2>OurWays™</h2>
         <p class="prose">
@@ -88,7 +88,7 @@ const index = [
         </p>
       </article>
 
-      <article class="tech-item reveal" id="anjel-tech">
+      <article class="tech-item reveal" data-index-target id="anjel-tech">
         <span class="eyebrow">04 / ANJEL® Tech</span>
         <h2>ANJEL® Tech</h2>
         <div class="tech-item__grid tech-item__grid--logo">
@@ -106,13 +106,13 @@ const index = [
               Visit anjel.tech <Arrow />
             </a>
           </div>
-          <div class="tech-item__logo tech-item__logo--gold">
+          <div class="tech-item__logo tech-item__logo--gold float">
             <Image src={anjelLogo} alt="ANJEL Tech lens logo" width="360" height="360" />
           </div>
         </div>
       </article>
 
-      <article class="tech-item reveal" id="guardian-anjel">
+      <article class="tech-item reveal" data-index-target id="guardian-anjel">
         <span class="eyebrow">05 / Guardian ANJEL®</span>
         <h2>Guardian ANJEL®</h2>
         <div class="tech-item__grid tech-item__grid--logo">
@@ -137,7 +137,7 @@ const index = [
               Visit guardiananjel.com <Arrow />
             </a>
           </div>
-          <div class="tech-item__logo tech-item__logo--blue">
+          <div class="tech-item__logo tech-item__logo--blue float float--late">
             <Image src={guardianLogo} alt="Guardian ANJEL iris logo" width="360" height="360" />
           </div>
         </div>
@@ -148,30 +148,12 @@ const index = [
   <section class="tagline">
     <div class="grid-bg"></div>
     <div class="container">
-      <p class="tagline__text reveal">
+      <p class="tagline__text reveal" data-split>
         See Something<span>-</span>Say Something<span>-</span><strong>STREAM Something!™</strong>
       </p>
     </div>
   </section>
 
-  <script>
-    // Highlight the index entry for the section in view.
-    const links = document.querySelectorAll<HTMLAnchorElement>('[data-index-link]');
-    const items = document.querySelectorAll<HTMLElement>('.tech-item');
-    if ('IntersectionObserver' in window && links.length) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            if (e.isIntersecting) {
-              links.forEach((l) => l.classList.toggle('is-active', l.dataset.indexLink === e.target.id));
-            }
-          }
-        },
-        { rootMargin: '-40% 0px -50% 0px' },
-      );
-      items.forEach((el) => io.observe(el));
-    }
-  </script>
 </Base>
 
 <style>

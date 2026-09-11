@@ -25,7 +25,7 @@ const { Content } = await render(member);
   <section class="bio">
     <div class="container bio__grid">
       <aside class="bio__side">
-        <div class="bio__frame reticle">
+        <div class="bio__frame reticle" data-tilt="4">
           <Image src={member.data.headshot} alt={`Portrait of ${member.data.name}`} width="720" height="900" class="bio__photo" />
         </div>
         <dl class="bio__meta">
@@ -44,11 +44,11 @@ const { Content } = await render(member);
         </div>
 
         <nav class="bio__nav" aria-label="Other team members">
-          <a href={`/team/${prev.id}/`}>
+          <a href={`/team/${prev.id}/`} data-spotlight>
             <span class="mono">Previous</span>
             <strong>{prev.data.name}</strong>
           </a>
-          <a href={`/team/${next.id}/`} class="bio__nav-next">
+          <a href={`/team/${next.id}/`} class="bio__nav-next" data-spotlight>
             <span class="mono">Next</span>
             <strong>{next.data.name}</strong>
           </a>

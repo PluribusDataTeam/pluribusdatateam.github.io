@@ -29,7 +29,9 @@ src/
   assets/images/             Source images (optimized by Astro at build time)
   styles/global.css          Design system: tokens, type scale, buttons,
                              paper/ink sections, reveal animation
-  components/Radar.astro     Decorative SVG geospatial panel in the home hero
+  scripts/site.ts            Site-wide behaviors (reveal, word split, tilt,
+                             spotlight, parallax, scroll-spy, progress bar)
+  scripts/geomap.ts          Interactive canvas "geosocial map" in the hero
 public/                      Favicon and the Pluribus logo (served as-is)
 ```
 
@@ -43,10 +45,16 @@ drop the headshot in `src/assets/images/team/`.
 - **No runtime third-party dependencies.** Fonts (Archivo, Inter, IBM Plex
   Mono) are self-hosted through `@fontsource` packages and bundled at build
   time, so the published site makes no requests to Google Fonts or any CDN.
-  Animations are plain CSS + a small IntersectionObserver; there is no JS
-  framework or UI-component library.
-- Motion respects `prefers-reduced-motion`; reveal animations are gated on a
-  `js` class so content is never hidden without JavaScript.
+  Animations are plain CSS plus two small vanilla-TS modules in
+  `src/scripts/`; there is no JS framework or UI-component library.
+- Pages use Astro view transitions (`<ClientRouter />`), so behaviors are
+  (re)initialised on `astro:page-load` and torn down on `astro:before-swap`.
+- Interactive pieces are opt-in via data attributes: `data-tilt`,
+  `data-spotlight`, `data-split`, `data-words`, `data-parallax`,
+  `data-geomap`. See the header comment in `src/scripts/site.ts`.
+- Motion respects `prefers-reduced-motion` (the hero map renders one static
+  frame); reveal animations are gated on a `js` class so content is never
+  hidden without JavaScript.
 
 ## Deploying
 

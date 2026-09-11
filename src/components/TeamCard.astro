@@ -14,7 +14,7 @@ const { name, title, href, headshot, index } = Astro.props;
 ---
 
 <a class="team-card reveal" href={href} data-delay={String((index % 4) + 1)}>
-  <div class="team-card__frame">
+  <div class="team-card__frame" data-tilt="6">
     <Image src={headshot} alt={`Portrait of ${name}`} width="640" height="800" class="team-card__photo" />
     <span class="team-card__index mono">{String(index + 1).padStart(2, '0')}</span>
   </div>

@@ -478,15 +478,168 @@ img {
   transform: none;
 }
 
+.js .reveal .eyebrow::before {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s var(--ease-out) 0.15s;
+}
+
+.js .reveal.is-in .eyebrow::before {
+  transform: scaleX(1);
+}
+
 .reveal[data-delay='1'] { transition-delay: 0.08s; }
 .reveal[data-delay='2'] { transition-delay: 0.16s; }
 .reveal[data-delay='3'] { transition-delay: 0.24s; }
 .reveal[data-delay='4'] { transition-delay: 0.32s; }
 .reveal[data-delay='5'] { transition-delay: 0.4s; }
 
+/* Word-level entrance ([data-split]) --------------------------------- */
+
+.js [data-split] .w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.55em) rotate(1.5deg);
+  transform-origin: left bottom;
+}
+
+.js .is-in[data-split] .w,
+.js .is-in [data-split] .w {
+  animation: word-in 0.9s var(--ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * 45ms + 0.1s);
+}
+
+@keyframes word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll-linked illumination ([data-words]) --------------------------- */
+
+.js [data-words] .wd {
+  opacity: 0.22;
+  transition: opacity 0.35s ease;
+}
+
+.js [data-words] .wd.is-on {
+  opacity: 1;
+}
+
+/* Tilt + spotlight ([data-tilt], [data-spotlight]) -------------------- */
+
+[data-tilt],
+[data-spotlight] {
+  --mx: 50%;
+  --my: 50%;
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+}
+
+[data-tilt] {
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.35s var(--ease-out);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+[data-tilt].is-hover {
+  transition: transform 0.08s linear;
+}
+
+[data-tilt]::after,
+[data-spotlight]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    380px circle at var(--mx) var(--my),
+    rgba(198, 234, 61, 0.13),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+[data-tilt].is-hover::after,
+[data-spotlight].is-hover::after {
+  opacity: 1;
+}
+
+.paper [data-tilt]::after,
+.paper [data-spotlight]::after {
+  background: radial-gradient(
+    360px circle at var(--mx) var(--my),
+    rgba(10, 13, 19, 0.08),
+    transparent 60%
+  );
+}
+
+/* Button sheen ------------------------------------------------------- */
+
+.btn--primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-out);
+}
+
+.btn--primary:hover::before {
+  transform: translateX(120%);
+}
+
+/* Floating logos ------------------------------------------------------ */
+
+.float {
+  animation: float 7s ease-in-out infinite;
+}
+
+.float--late {
+  animation-delay: -3.5s;
+}
+
+@keyframes float {
+  0%,
+  100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Reduced motion ------------------------------------------------------ */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .js [data-split] .w {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .js [data-words] .wd {
+    opacity: 1;
+  }
+
+  [data-tilt] {
+    transform: none;
+  }
+
+  .float {
+    animation: none;
   }
 
   .reveal {
